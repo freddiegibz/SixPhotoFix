@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>You&rsquo;re In | The Six-Photo Fix</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--black:#090b14;--card:#191d2c;--pink:#6379f5;--orange:#9b63ef;--green:#4ade80;--muted:#aeb3c2;--line:rgba(255,255,255,.09)}
+    *{box-sizing:border-box}body{min-height:100vh;margin:0;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 50% 22%,rgba(99,121,245,.2),transparent 32%),#090b14;color:#fff;font:16px/1.55 Inter,Arial,sans-serif}
+    .card{width:100%;max-width:590px;padding:48px 34px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#1d2030,#121521);box-shadow:0 28px 70px rgba(0,0,0,.38);text-align:center}
+    .check{display:grid;place-items:center;width:62px;height:62px;margin:0 auto 22px;border:2px solid var(--green);border-radius:50%;color:var(--green);font-size:32px;font-weight:800}
+    .eyebrow{margin:0 0 12px;color:var(--green);font:800 12px/1 Outfit,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+    h1{margin:0 0 16px;font:800 clamp(40px,8vw,58px)/.98 Outfit,Arial,sans-serif;letter-spacing:-.05em}
+    p{max-width:430px;margin:0 auto;color:var(--muted)}
+    .cta{display:block;width:100%;margin:32px 0 15px;padding:19px 20px;border-radius:16px;background:linear-gradient(135deg,var(--pink),var(--orange));box-shadow:7px 8px 0 rgba(99,121,245,.16),0 12px 30px -10px rgba(99,121,245,.58);color:#fff;font:800 17px/1 Outfit,Arial,sans-serif;letter-spacing:.02em;text-decoration:none;text-transform:uppercase}
+    .note{font-size:13px}.back{display:inline-block;margin-top:28px;color:#c8d0ff;font-size:13px;text-decoration:none}
+  </style>
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','1440902484729766');
+    fbq('track','PageView');
+    fbq('track','Purchase',{content_name:'The Six-Photo Fix',content_type:'product',value:19,currency:'USD'});
+  </script>
+  <!-- End Meta Pixel Code -->
+</head>
+<body>
+  <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1440902484729766&amp;ev=PageView&amp;noscript=1"></noscript>
+  <main class="card">
+    <div class="check">✓</div>
+    <p class="eyebrow">Payment successful</p>
+    <h1>You&rsquo;re in.</h1>
+    <p>Your copy of The Six-Photo Fix is ready. Download it, build your new line-up, and stop paying apps to show women the same bad photos.</p>
+    <!-- Replace the href below with the final PDF or delivery URL before going live. -->
+    <a class="cta" href="six-photo-fix-guide.pdf" download>Download The Six-Photo Fix</a>
+    <p class="note">Your download link has also been sent to your email.</p>
+    <a class="back" href="index.html">Back to the site</a>
+  </main>
+</body>
+</html>
