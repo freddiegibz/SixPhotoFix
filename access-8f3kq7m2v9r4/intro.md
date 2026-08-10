@@ -8,6 +8,8 @@ The problem is that their profile gives nobody a reason to stop. It is the same 
 
 So girls swipe past before they ever get a proper look at you.
 
+**How you can use AI to get more matches**
+
 Dating apps have changed. Great photos are no longer something you need to spend hundreds of pounds on in a photoshoot to get. With AI, they are now quick and affordable to make.
 
 The problem is that nobody shows you how to use it properly: how to create photos that actually look believable, what strong dating-app photos look like, or how to order them so hot girls stop, scroll, and swipe right.
