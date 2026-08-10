@@ -380,22 +380,38 @@
       const intro = setup.querySelector('.intro');
       if (title) title.textContent = 'Use AI to make the six photos in your profile.';
       if (intro) intro.textContent = 'This section shows you how to set up the AI with photos of yourself, then use the prompts later in this guide to create each of the six profile photos.';
-      const route = setup.querySelector('.route');
+      const route = Array.from(setup.querySelectorAll('.route')).find((card) => getComputedStyle(card).display !== 'none');
       if (route) {
         route.querySelector('h3').textContent = 'Use AI to make your first profile photo';
         route.querySelector('p').textContent = 'Upload your reference photos, paste a prompt, and choose the version that looks most like you. You do not need a paid tool to get started.';
       }
+      setup.querySelectorAll('.kicker').forEach((kicker) => {
+        if (kicker.textContent.toLowerCase().includes('gemini')) kicker.textContent = 'The 10-Selfie Method · AI setup';
+      });
       const steps = setup.querySelectorAll('.steps .step');
       if (steps[0]) {
         steps[0].querySelector('h3').textContent = 'Open your AI image tool.';
         const link = steps[0].querySelector('a');
-        if (link) link.textContent = 'Open the AI image tool →';
+        if (link) {
+          link.textContent = 'Open the AI image tool →';
+          steps[0].querySelector('p').innerHTML = link.outerHTML;
+        }
       }
       if (steps[1]) {
         steps[1].querySelector('h3').textContent = 'Start a new chat and upload 10 photos.';
         steps[1].querySelector('p').textContent = 'Use 10 current photos of yourself: different angles, different expressions, and at least one full-body shot. Clear reference photos give the AI a stronger version of your face and body. Leave out group shots, filters, sunglasses, face coverings, duplicates, and old photos.';
       }
+      setup.querySelectorAll('.how-to-use').forEach((note) => {
+        if (note.textContent.toLowerCase().includes('higgsfield') || note.textContent.toLowerCase().includes('gemini')) note.remove();
+      });
     }
+
+    const plan = document.querySelector('.plan');
+    if (plan) {
+      const intro = plan.querySelector('.intro');
+      if (intro) intro.textContent = 'This is the order to use. You can choose photos from your camera roll, make them with AI, or mix both. The only rule is that each one adds something the previous photos did not.';
+    }
+    if (setup?.querySelector('.kicker')) setup.querySelector('.kicker').textContent = 'Part 2 · Generate your photos with AI';
   })();
 </script>
 </body>
