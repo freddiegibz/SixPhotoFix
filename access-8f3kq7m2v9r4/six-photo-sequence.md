@@ -1,4 +1,4 @@
-### The Six-Photo Sequence
+### Why the Six-Photo Sequence Cures Bad Profiles
 
 The six-photo sequence is what turns a profile from a random set of decent pictures into something that actually works together.
 
