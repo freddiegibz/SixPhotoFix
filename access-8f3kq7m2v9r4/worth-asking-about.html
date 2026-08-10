@@ -256,5 +256,45 @@
     }
   })();
 </script>
+<script>
+  (() => {
+    const method = Array.from(document.querySelectorAll('main > section.page')).find((section) => section.querySelector('.kicker')?.textContent.trim() === 'Build your three profile answers');
+    if (!method) return;
+
+    method.innerHTML = `
+      <p class="kicker">Build your three profile answers</p>
+      <h2>Pick one answer from each group. Your written profile is done.</h2>
+      <p class="intro">You need three different reasons to match: one that makes time with you sound good, one that shows a little personality, and one that gives her an easy first message. Choose the closest version below and change only the detail in bold.</p>
+
+      <div class="question"><span class="number">01</span><div><h3>Give her a date she can picture.</h3><p>Use this for a “Typical Sunday,” “My simple pleasures,” or “The key to my heart” prompt.</p><div class="answer"><b>Copy this</b><p>“A good Sunday is a long walk followed by finding somewhere that takes <strong>roast potatoes</strong> seriously.”</p></div><div class="check"><b>Change one thing:</b> swap “long walk” or “roast potatoes” for a plan and food you actually enjoy. Leave the rest alone.</div></div></div>
+
+      <div class="question"><span class="number">02</span><div><h3>Show one light opinion.</h3><p>Use this for an “I’ll die on this hill,” “A random fact I love,” or “I’m known for” prompt.</p><div class="answer"><b>Copy this</b><p>“I will stand by this: a pub quiz needs a <strong>music round</strong>. Happy to hear the case for anything else.”</p></div><div class="check"><b>Change one thing:</b> replace “music round” with a harmless opinion you could happily discuss for two minutes.</div></div></div>
+
+      <div class="question"><span class="number">03</span><div><h3>Hand her the first message.</h3><p>Use this for “I’m looking for,” “The way to win me over,” or “We’ll get along if” prompts.</p><div class="answer"><b>Copy this</b><p>“I’m looking for someone who is up for trying the <strong>new local place</strong> before it gets ruined by TikTok.”</p></div><div class="check"><b>Change one thing:</b> replace “new local place” with a plan you would genuinely say yes to. It gives her an obvious reply: “I know where we should go.”</div></div></div>
+
+      <div class="finished-examples">
+        <p class="kicker" style="margin-top:52px">More finished examples</p>
+        <h2>Use one of these if it already fits.</h2>
+        <p class="intro">These are ready to post. Pick one that is close to your life, make one small swap if needed, and move on.</p>
+        <h3 style="margin:34px 0 12px;font-size:26px">Hinge or Bumble prompt answers</h3>
+        <div class="card-grid">
+          <article class="card"><h3>“My simple pleasures”</h3><p>“Trying a new coffee shop, taking the long way home, and finding a film worth putting my phone away for.”</p></article>
+          <article class="card"><h3>“Typical Sunday”</h3><p>“A long walk, a late lunch somewhere that takes roast potatoes seriously, then pretending I will watch one episode.”</p></article>
+          <article class="card"><h3>“I’ll fall for you if”</h3><p>“You have a strong restaurant recommendation and are willing to defend it.”</p></article>
+          <article class="card"><h3>“The way to win me over is”</h3><p>“Suggesting a low-key plan, arriving with a snack recommendation, and not pretending to enjoy escape rooms.”</p></article>
+          <article class="card"><h3>“I know the best spot in town for”</h3><p>“A last-minute pint, a decent pasta dish, and a pub quiz team that needs help with the music round.”</p></article>
+          <article class="card"><h3>“I’m looking for”</h3><p>“Someone who is up for trying the new local place before it gets ruined by TikTok.”</p></article>
+        </div>
+        <h3 style="margin:46px 0 12px;font-size:26px">Tinder bios</h3>
+        <div class="card-grid">
+          <article class="card"><p>“Working my way through every good pizza place in the area. Taking recommendations seriously.”</p></article>
+          <article class="card"><p>“Good coffee, long walks, live music when I can find it. Always open to a better local recommendation.”</p></article>
+          <article class="card"><p>“Firm believer that a pub quiz needs a music round. Looking for someone with a stronger geography game.”</p></article>
+        </div>
+      </div>
+      <div class="check"><b>Final step:</b> put the three answers into Hinge or Bumble. If you use Tinder, use one of the short bios instead. You are done.</div>
+    `;
+  })();
+</script>
 </body>
 </html>
