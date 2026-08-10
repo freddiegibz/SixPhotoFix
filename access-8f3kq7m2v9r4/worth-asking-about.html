@@ -147,5 +147,21 @@
     if (finishCopy) finishCopy.textContent = 'Photos get attention. These three small details help the right woman see something enjoyable, familiar, or worth asking about - then make it easy for her to respond.';
   })();
 </script>
+<script>
+  (() => {
+    const method = Array.from(document.querySelectorAll('main > section.page')).find((section) => section.querySelector('.kicker')?.textContent.trim() === 'The matchability method');
+    if (!method) return;
+    method.innerHTML = `
+      <p class="kicker">The matchability method</p>
+      <h2>Take one real detail. Turn it into one answer she can picture and reply to.</h2>
+      <p class="intro">You are not trying to “write prompts.” You are taking a normal bit of your life and making it do two jobs: show what being around you might feel like, then give her something easy to say back.</p>
+      <div class="question"><span class="number">01</span><div><h3>Start with something you actually do.</h3><p>Write down one answer for each of these. Do not make it impressive - just make it true.</p><div class="card-grid"><article class="card"><h3 style="font-size:24px">A regular plan</h3><p>What do you usually do on a good Friday, Saturday, or Sunday?</p></article><article class="card"><h3 style="font-size:24px">A small obsession</h3><p>What food, place, hobby, team, book, or routine do you have a real opinion about?</p></article><article class="card wide"><h3 style="font-size:24px">A thing you would happily share</h3><p>What would you actually suggest doing with someone you liked: a local walk, trying a place, cooking something, a quiz, a gallery, a film, or a day out?</p></article></div><div class="answer"><b>Example raw detail</b><p>“I try new pizza places on Fridays.”</p></div></div></div>
+      <div class="question"><span class="number">02</span><div><h3>Make it sound like a real moment, not a list of interests.</h3><p>Add what you do, when you do it, and the small thing that makes it yours. That is enough to turn a generic fact into a scene.</p><div class="answer"><b>Raw detail</b><p>“I try new pizza places on Fridays.”</p></div><div class="answer"><b>Make it a moment</b><p>“Friday is for trying a new pizza place in my area.”</p></div><div class="check"><b>What changed?</b> You can now picture a normal evening with him. We did not invent a lifestyle; we simply made the real detail visible.</div></div></div>
+      <div class="question"><span class="number">03</span><div><h3>Give her a way in.</h3><p>Add a question, recommendation request, or friendly opinion. You are not asking her to perform. You are giving her a very easy first message.</p><div class="answer"><b>Finished answer</b><p>“Friday is for trying a new pizza place in my area. I still need a convincing argument for anywhere better than [your favourite].”</p></div><div class="check"><b>What she can say back:</b> “You need to try…” or “That place is overrated.” The conversation has already started.</div></div></div>
+      <div class="card-grid"><article class="card"><h3>Use this for a plan</h3><p><b>“A good [day] is [real plan], followed by [small preference].”</b><br><br>Example: “A good Sunday is a long walk followed by finding somewhere that takes roast potatoes seriously.”</p></article><article class="card"><h3>Use this for an opinion</h3><p><b>“I will stand by this: [light opinion]. Convince me otherwise.”</b><br><br>Example: “I will stand by this: a pub quiz needs a music round. Convince me otherwise.”</p></article><article class="card wide"><h3>Use this for a shared thing</h3><p><b>“I am looking for someone who is up for [real thing you would share].”</b><br><br>Example: “I am looking for someone who is up for trying the new local place before it gets ruined by TikTok.”</p></article></div>
+      <div class="check"><b>Your job:</b> make three answers using the same process - one regular plan, one opinion, and one thing you would share. If each one sounds like you and gives someone an easy response, you are finished.</div>
+    `;
+  })();
+</script>
 </body>
 </html>
