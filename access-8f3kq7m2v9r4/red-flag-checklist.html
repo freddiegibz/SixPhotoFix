@@ -278,5 +278,37 @@
     });
   })();
 </script>
+<script>
+  (() => {
+    const hero = document.querySelector('.hero');
+    const checklist = Array.from(document.querySelectorAll('main > section.page')).find((section) => section.querySelector('.kicker')?.textContent.trim() === 'Before you upload');
+    if (hero) {
+      hero.querySelector('.kicker').textContent = 'Bonus 03 · Check every AI photo before it goes live';
+      hero.querySelector('h1').textContent = 'The “Don’t Upload That” Checklist.';
+      hero.querySelector('.lead').textContent = 'The tiny AI mistakes that can make the whole photo feel fake in two seconds. Dead eyes. Plastic skin. Weird hands. Fake backgrounds. Catch them before a match does.';
+      hero.querySelector('.truth').innerHTML = 'This is not a profile review. It is a <b>60-second final check for one AI photo.</b>';
+    }
+    if (!checklist) return;
+    checklist.querySelector('.kicker').textContent = 'Run this just before you upload';
+    checklist.querySelector('h2').textContent = 'If one answer is no, do not upload it yet.';
+    checklist.querySelector('.intro').textContent = 'You are looking for the tiny details that make an AI image stop feeling believable. Look at the photo on your phone as well as on a larger screen — the small issues are usually easier to spot there.';
+    const checks = [
+      ['Does the face look exactly like you?', 'Check your face shape, current haircut, facial hair, age, and skin tone. If someone who knows you would hesitate, regenerate it.'],
+      ['Do the eyes look alive?', 'The eyes should be looking naturally at something, with normal catchlights and a relaxed expression. Blank, glassy, crossed, or over-sharpened eyes are a no.'],
+      ['Does the skin look human?', 'Look for ordinary texture: pores, a little variation, and natural shadow. If it looks airbrushed, waxy, or unusually smooth, ask Gemini for less polish.'],
+      ['Are the hands and body right?', 'Count fingers. Check wrists, teeth, ears, hair, glasses, clothes, and the shape of your body. One strange detail is enough to give the image away.'],
+      ['Does the background hold up?', 'Scan the edges: furniture, cups, signs, reflections, people behind you, and text. Warped objects, nonsense writing, or duplicate details mean it needs another pass.'],
+      ['Would this pass as a real photo of you?', 'Take in the whole image. Does the light, pose, setting, and finish look like a photo that could genuinely exist in your camera roll? If it feels “AI-ish,” trust that reaction.']
+    ];
+    const list = checklist.querySelector('div[style*="border-top"]');
+    if (list) list.innerHTML = checks.map(([heading, copy], index) => `<label style="display:grid;grid-template-columns:52px 1fr;gap:18px;align-items:start;padding:23px 0;border-bottom:1px solid #251b25;cursor:pointer"><input type="checkbox" style="appearance:none;width:42px;height:42px;margin:0;border:2px solid #4d265d;background:#fff;cursor:pointer" onchange="this.style.background=this.checked?'#4d265d':'#fff'" aria-label="${heading}"><span><span style="display:block;margin-bottom:5px;color:#4d265d;font:500 11px/1.3 'DM Mono',monospace;letter-spacing:.08em">CHECK ${String(index + 1).padStart(2, '0')}</span><h3 style="margin:0 0 6px">${heading}</h3><p style="margin:0;color:#625963;font-size:17px">${copy}</p></span></label>`).join('');
+    checklist.querySelector('.outcomes')?.remove();
+    checklist.querySelector('.check')?.remove();
+    const decision = document.createElement('div');
+    decision.className = 'check';
+    decision.innerHTML = '<b>Make the call:</b> six easy yeses means upload it. One small issue means regenerate or refine that one detail. If the face, eyes, hands, or background still feel wrong after a second attempt, leave it out and try another prompt.';
+    checklist.appendChild(decision);
+  })();
+</script>
 </body>
 </html>
