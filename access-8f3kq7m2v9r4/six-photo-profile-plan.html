@@ -354,5 +354,23 @@
     }
   })();
 </script>
+<script>
+  (() => {
+    const repeatedRoleGuide = document.querySelector('.six-explained');
+    if (repeatedRoleGuide) repeatedRoleGuide.style.display = 'none';
+
+    const setup = Array.from(document.querySelectorAll('.setup')).find((section) => section.querySelector('.kicker')?.textContent.includes('Part 3'));
+    if (setup) {
+      const kicker = setup.querySelector('.kicker');
+      if (kicker) kicker.textContent = 'Part 2 · Generate your photos with Gemini';
+    }
+
+    const prompts = document.querySelector('.prompt-library');
+    if (prompts) {
+      const kicker = prompts.querySelector('.kicker');
+      if (kicker) kicker.textContent = 'Part 3 · Pick your prompts';
+    }
+  })();
+</script>
 </body>
 </html>
