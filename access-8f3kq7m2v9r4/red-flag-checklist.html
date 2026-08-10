@@ -145,5 +145,59 @@
     if (finishTitle) finishTitle.textContent = 'Upload the set that gives her the clearest reason to choose you.';
   })();
 </script>
+<script>
+  (() => {
+    const pageSections = Array.from(document.querySelectorAll('main > section.page'));
+    const getSection = (label) => pageSections.find((section) => section.querySelector('.kicker')?.textContent.trim() === label);
+    const hero = document.querySelector('.hero');
+    const how = getSection('How to use this');
+    const score = getSection('The 5-second reality check');
+    const filter = getSection('The five-question filter');
+    const catches = getSection('Things worth catching');
+    const outcomes = getSection('Make the call');
+    const rescue = getSection('If one detail is nearly there');
+    const examples = getSection('See the difference');
+    const finalSet = getSection('One last look at the full set');
+    const contents = getSection('What is inside');
+    const matchTest = getSection('The match test');
+
+    if (hero) {
+      const title = hero.querySelector('h1');
+      const lead = hero.querySelector('.lead');
+      if (title) title.textContent = 'Choose the photos that earn their place.';
+      if (lead) lead.textContent = 'This is one simple decision system for turning a pile of options into the six photos most likely to make your profile work harder. Run one photo job at a time. Do not try to judge the whole profile in your head.';
+    }
+
+    [contents, examples, matchTest].filter(Boolean).forEach((section) => section.style.display = 'none');
+    if (!how || !score || !filter || !catches || !outcomes || !rescue || !finalSet) return;
+
+    how.after(score);
+    const progress = document.createElement('div');
+    progress.style.cssText = 'display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:30px';
+    progress.innerHTML = ['1 · Compare','2 · Score','3 · Diagnose','4 · Decide','5 · Assemble'].map((item, index) => `<div style="padding:12px;background:${index === 0 ? '#eee4f3' : '#ebe1d5'};color:#4d265d;font:500 11px/1.3 'DM Mono',monospace;letter-spacing:.04em;text-transform:uppercase">${item}</div>`).join('');
+    how.insertAdjacentElement('afterend', progress);
+
+    const setHeading = (section, kicker, heading, intro) => {
+      const k = section.querySelector('.kicker');
+      const h = section.querySelector('h2');
+      const p = section.querySelector('.intro');
+      if (k) k.textContent = kicker;
+      if (h) h.textContent = heading;
+      if (p && intro) p.textContent = intro;
+    };
+    setHeading(how, 'Step 1 · Compare', 'Pick one photo job. Put only its close alternatives beside it.', 'Do not compare a first-photo portrait with a cooking photo. Decide what this slot needs to do, then compare only the versions trying to do that same job. That makes the choice much easier.');
+    setHeading(score, 'Step 2 · Score', 'Give each option a fast, useful score.', 'This is not a beauty contest. You are looking for the version that performs the specific job your profile needs it to do.');
+    setHeading(filter, 'Step 3 · Diagnose', 'If an image is losing points, find the real reason.', 'Work down these five checks. You are not looking for perfection. You are finding the one thing that stops this version being the obvious choice.');
+    setHeading(catches, 'Step 3 · Check the details', 'Only inspect these if the image is close.', 'These are not extra hurdles. They are the small trust-breakers worth catching before you upload a near-finished image.');
+    setHeading(outcomes, 'Step 4 · Decide', 'Every photo gets one clear next move.', 'No folder of “maybes.” Once you have scored and checked it, make the call and move forward.');
+    setHeading(rescue, 'Step 4 · Refine', 'If it is close, fix one thing—not the whole photo.', 'Use one rescue line only when the image is already doing its job and one small detail is holding it back.');
+    setHeading(finalSet, 'Step 5 · Assemble', 'Now check whether your final six work together.', 'Only do this after you have chosen the strongest version for each job. At this point, you are checking the story the whole profile tells.');
+
+    const finishTitle = document.querySelector('.finish h2');
+    const finishCopy = document.querySelector('.finish-box p');
+    if (finishTitle) finishTitle.textContent = 'You have a repeatable way to choose, not just a better eye.';
+    if (finishCopy) finishCopy.textContent = 'Each time you make or find a new option, run it through the same five steps. That is how you stop endlessly swapping photos and start building a profile with a job for every image.';
+  })();
+</script>
 </body>
 </html>

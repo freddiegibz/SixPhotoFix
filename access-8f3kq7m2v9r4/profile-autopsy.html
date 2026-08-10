@@ -49,5 +49,57 @@
     if (endCopy) endCopy.textContent = 'The Six-Photo Plan gives you the exact replacement evidence for that leak. You are not starting from scratch. You are installing the missing reason for her to keep looking, trust what she sees, and match.';
   })();
 </script>
+<script>
+  (() => {
+    const hero = document.querySelector('.hero');
+    const evidence = Array.from(document.querySelectorAll('.page')).find((section) => section.querySelector('.kicker')?.textContent.trim() === 'Your evidence audit');
+    const ending = document.querySelector('.ending');
+    const staticCheck = Array.from(document.querySelectorAll('.page')).find((section) => section.querySelector('.kicker')?.textContent.trim() === 'Check your profile against this');
+    const contents = Array.from(document.querySelectorAll('.page')).find((section) => section.querySelector('.kicker')?.textContent.trim() === 'What is inside');
+    const teardown = document.querySelector('.teardown');
+    const gaps = document.querySelector('.dark');
+    if (!hero || !evidence || !ending) return;
+
+    [contents, teardown, gaps, staticCheck].filter(Boolean).forEach((section) => section.style.display = 'none');
+
+    const title = hero.querySelector('h1');
+    const lead = hero.querySelector('.lead');
+    if (title) title.textContent = 'Find the first thing your profile is failing to prove.';
+    if (lead) lead.textContent = 'Keep your profile open beside this page. Answer the four checks in order. The first answer that is “no” tells you exactly what to improve next. Do not keep hunting for ten more problems.';
+
+    const kicker = evidence.querySelector('.kicker');
+    const heading = evidence.querySelector('h2');
+    const intro = evidence.querySelector('.intro');
+    if (kicker) kicker.textContent = 'The four-check profile audit';
+    if (heading) heading.textContent = 'Find your first “no.” That is your next move.';
+    if (intro) intro.textContent = 'Start at 1 and stop at the first check your current profile cannot clearly pass. Fix that one thing before worrying about anything lower down the list.';
+
+    const questions = evidence.querySelectorAll('.question');
+    const rewrites = [
+      ['Can she see you clearly?', 'Is your first photo a current, flattering, unobstructed view of your face? If not, replace your opener first. Nothing else has a chance to help until this does.'],
+      ['Does the profile feel believable?', 'Do your photos look current, natural, and like the same person? If not, add a second clear, real-looking photo before you add more lifestyle shots.'],
+      ['Can she picture spending time with you?', 'Does the profile show one normal, appealing glimpse of your life or a likely date? If not, build that slot next.'],
+      ['Is there an easy way to start a conversation?', 'Can someone ask you one simple question about a visible detail or prompt? If not, add one clear hook last.']
+    ];
+    questions.forEach((question, index) => {
+      const h3 = question.querySelector('h3');
+      const p = question.querySelector('p');
+      if (h3) h3.textContent = rewrites[index][0];
+      if (p) p.textContent = rewrites[index][1];
+    });
+
+    const decision = document.createElement('div');
+    decision.style.cssText = 'margin-top:30px;padding:25px 28px;background:#e7d6ea;border-left:5px solid #4d265d';
+    decision.innerHTML = '<p class="kicker" style="margin:0 0 12px">Make the call</p><h3 style="font-size:32px">Your next move is the first check you cannot pass.</h3><p style="margin:10px 0 0;color:#554c56;font-size:17px">Fix it with the matching photo job in the Six-Photo Profile Plan. Then come back and run the four checks again. If you pass all four, stop auditing and publish the profile.</p>';
+    evidence.appendChild(decision);
+
+    const endingKicker = ending.querySelector('.kicker');
+    const endingTitle = ending.querySelector('h2');
+    const endingCopy = ending.querySelector('p:not(.kicker)');
+    if (endingKicker) endingKicker.textContent = 'That is the whole autopsy';
+    if (endingTitle) endingTitle.textContent = 'One clear gap. One useful next step.';
+    if (endingCopy) endingCopy.textContent = 'You do not need a longer list of mistakes. Fix the first missing proof, then let the rest of your profile get a fair chance to work.';
+  })();
+</script>
 </body>
 </html>
