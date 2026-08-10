@@ -1,12 +1,6 @@
-### Your Six-Photo Prompt Pack
-
-Use these prompts once your AI image setup is ready. Paste one prompt into the AI, add your reference photo when it asks for one, and it will create an image for that part of your profile.
+### 30 Photo Generation Prompts
 
 Work through the prompts until you have one image you genuinely like for each photo slot. You can also use a photo already in your camera roll if it is stronger and fits that slot better. This does not need to be perfect on the first try: generate a few versions, then keep the one that feels most like you.
-
-Start with Photo 1. It is your hook photo: the clear, natural first picture that makes someone stop and look at the rest of your profile. Choose the version where your face is clearest, your expression feels natural, and you would be happy for it to be the first thing someone sees.
-
-### Photo 1 — Hook photo
 
 Choose **one** of the prompts below. Each gives you a relaxed, clear café photo with a slightly different pose or setting.
 
