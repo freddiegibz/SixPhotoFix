@@ -24,7 +24,7 @@ It gives you:
 
 By the end of this product, your dating profile will not be average—and your matches will not be either.
 
-## A good photo is not automatically a good dating-app photo
+## Tip 1: A good photo is not automatically a good dating-app photo
 
 A photo can be sharp, well lit, and professionally taken—and still be a bad dating-app photo.
 
