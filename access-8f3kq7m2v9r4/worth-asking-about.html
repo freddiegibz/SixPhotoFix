@@ -95,5 +95,57 @@
     </div>
   </section>
 </main>
+<script>
+  (() => {
+    const hero = document.querySelector('.hero');
+    const finish = document.querySelector('.finish');
+    if (!hero || !finish) return;
+
+    const title = hero.querySelector('h1');
+    const lead = hero.querySelector('.lead');
+    const truth = hero.querySelector('.truth');
+    if (title) title.textContent = 'Turn your real life into a reason to match you.';
+    if (lead) lead.textContent = 'Your photos show what you look like. This gives someone a quick feel for what spending time with you could actually be like - and an easy reason to start the conversation.';
+    if (truth) truth.innerHTML = 'You do not need a better life or a cleverer bio. You need to make one real detail feel <b>specific, enjoyable, and easy to step into.</b>';
+
+    Array.from(document.querySelectorAll('main > section.page')).forEach((section) => {
+      if (section !== hero && section !== finish) section.style.display = 'none';
+    });
+
+    const method = document.createElement('section');
+    method.className = 'page';
+    method.innerHTML = `
+      <p class="kicker">The matchability method</p>
+      <h2>Do this three times. You will have the whole written side of your profile.</h2>
+      <p class="intro">Take one ordinary thing from your life and run it through these same three steps. You are not trying to sound impressive. You are making it easy for the right person to imagine joining in.</p>
+      <div class="question"><span class="number">01</span><div><h3>Pick a real moment.</h3><p>Choose something you genuinely do or enjoy: your Sunday routine, a local place, a meal you make, a small opinion, a hobby, or the kind of plan you would happily suggest.</p><div class="answer"><b>Not this</b><p>“I like travel, food and the gym.”</p></div><div class="answer"><b>Use this</b><p>“Trying every new pizza place in my area until one becomes the official Friday order.”</p></div></div></div>
+      <div class="question"><span class="number">02</span><div><h3>Add your take.</h3><p>Give the detail a preference, tiny rule, opinion, or bit of personality. This is the part that turns a fact about you into a glimpse of you.</p><div class="answer"><b>Simple formula</b><p>[Real moment] + [your point of view]</p></div></div></div>
+      <div class="question"><span class="number">03</span><div><h3>Leave a handle.</h3><p>Make it easy to reply. A friendly disagreement, a recommendation request, or an invitation is enough. She should not need to invent a clever opening.</p><div class="answer"><b>Finish it like this</b><p>“I still think [opinion]. Happy to hear the case for the other side.”</p></div></div></div>
+      <div class="check"><b>The test:</b> could someone read this and think “that sounds like a nice thing to do with him” or “I know exactly what I would say back”? If yes, it is doing its job.</div>
+    `;
+    finish.before(method);
+
+    const outputs = document.createElement('section');
+    outputs.className = 'page';
+    outputs.innerHTML = `
+      <p class="kicker">Your finished profile</p>
+      <h2>Make three matchable details. Give each one a different job.</h2>
+      <div class="outcomes">
+        <article class="outcome"><h3>One you can join.</h3><p>A weekend plan, ritual, place, meal, or interest that makes time with you easy to picture.</p></article>
+        <article class="outcome"><h3>One that sounds like you.</h3><p>A light opinion or preference that gives your personality a little shape.</p></article>
+        <article class="outcome"><h3>One she can answer.</h3><p>A detail with a natural question, recommendation, or friendly disagreement built in.</p></article>
+      </div>
+      <div class="check"><b>Where they go:</b> use the three as Hinge or Bumble prompt answers. On Tinder, use the clearest one as your bio and save the others for the conversation.</div>
+    `;
+    finish.before(outputs);
+
+    const finishKicker = finish.querySelector('.kicker');
+    const finishTitle = finish.querySelector('h2');
+    const finishCopy = finish.querySelector('p:not(.kicker)');
+    if (finishKicker) finishKicker.textContent = 'You are done';
+    if (finishTitle) finishTitle.textContent = 'Your profile now says more than “here is my face.”';
+    if (finishCopy) finishCopy.textContent = 'Photos get attention. These three small details help the right woman see something enjoyable, familiar, or worth asking about - then make it easy for her to respond.';
+  })();
+</script>
 </body>
 </html>
