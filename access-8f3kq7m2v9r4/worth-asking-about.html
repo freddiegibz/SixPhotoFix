@@ -223,5 +223,38 @@
     (finalCheck || method.lastElementChild).before(examples);
   })();
 </script>
+<script>
+  (() => {
+    const hero = document.querySelector('.hero');
+    const method = Array.from(document.querySelectorAll('main > section.page')).find((section) => section.querySelector('.kicker')?.textContent.trim() === 'The matchability method');
+    const outputs = Array.from(document.querySelectorAll('main > section.page')).find((section) => section.querySelector('.kicker')?.textContent.trim() === 'Your finished profile');
+    const finish = document.querySelector('.finish');
+
+    if (hero) {
+      hero.querySelector('.kicker').textContent = 'Bonus 02 · The “Worth Asking About” Profile Setup';
+      hero.querySelector('h1').textContent = 'Turn ordinary details from your life into prompts that get replies.';
+      hero.querySelector('.lead').textContent = 'Your photos get her to stop. These answers give her one more reason to choose you — and something easy to say once she does. By the end, you will have three profile answers ready to use.';
+      hero.querySelector('.truth').innerHTML = 'You are not trying to sound clever. You are choosing <b>three real things that make matching with you feel like a good idea.</b>';
+    }
+
+    if (method) {
+      method.querySelector('.kicker').textContent = 'Build your three profile answers';
+      method.querySelector('h2').textContent = 'Take three ordinary details. Turn each one into a reason to match and a reason to reply.';
+      method.querySelector('.intro').textContent = 'Choose one normal plan, one light opinion, and one thing you would happily share with someone. We will turn each into a finished prompt answer. You can use them on Hinge or Bumble straight away.';
+    }
+
+    if (outputs) {
+      outputs.querySelector('.kicker').textContent = 'What you will leave with';
+      outputs.querySelector('h2').textContent = 'Three answers that do more than tell people what you like.';
+    }
+
+    if (finish) {
+      finish.querySelector('.kicker').textContent = 'Your prompts are ready';
+      finish.querySelector('h2').textContent = 'Now give your matches an easy place to start.';
+      const copy = finish.querySelector('p:not(.kicker)');
+      if (copy) copy.textContent = 'Put your three strongest answers into Hinge or Bumble. They now give women something clearer to choose, something specific to ask about, and an easier first message than “hey.”';
+    }
+  })();
+</script>
 </body>
 </html>
