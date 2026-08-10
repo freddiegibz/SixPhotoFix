@@ -203,5 +203,34 @@
     if (promptIntro) promptIntro.textContent = 'Choose one route that actually fits your life. Start with a Photo 1 prompt. You do not need to generate every option; make one, check it against the guide, then move to Photo 2.';
   })();
 </script>
+<script>
+  (() => {
+    const setup = document.querySelector('.setup');
+    if (!setup) return;
+    const routes = setup.querySelector('.routes');
+    const routeCards = routes ? Array.from(routes.querySelectorAll('.route')) : [];
+    const geminiCard = routeCards.find((card) => card.textContent.includes('Gemini'));
+    routeCards.filter((card) => card !== geminiCard).forEach((card) => card.style.display = 'none');
+    if (routes && geminiCard) {
+      routes.style.gridTemplateColumns = '1fr';
+      geminiCard.classList.add('recommended');
+      geminiCard.querySelector('.label').textContent = 'Start here - free and simplest';
+      geminiCard.querySelector('h3').textContent = 'Use Gemini to make your first profile photo';
+      geminiCard.querySelector('p').textContent = 'This guide uses one simple route from here: upload your reference photos, paste a prompt, and choose the version that looks most like you. You do not need a paid tool to get started.';
+    }
+
+    const paidKicker = Array.from(setup.querySelectorAll('.kicker')).find((item) => item.textContent.includes('Paid setup'));
+    if (paidKicker) {
+      const paidSteps = paidKicker.nextElementSibling;
+      paidKicker.style.display = 'none';
+      if (paidSteps) paidSteps.style.display = 'none';
+      const laterNote = document.createElement('div');
+      laterNote.className = 'how-to-use';
+      laterNote.style.marginTop = '40px';
+      laterNote.innerHTML = '<b>You do not need another method right now.</b><br><br>If you already pay for a different image tool, you can use the same reference photos and the same prompts later. But do not add another setup decision today. Get one good Gemini result first.';
+      paidKicker.insertAdjacentElement('beforebegin', laterNote);
+    }
+  })();
+</script>
 </body>
 </html>
