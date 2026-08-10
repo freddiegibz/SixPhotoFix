@@ -371,6 +371,30 @@
     if (prompts) {
       const kicker = prompts.querySelector('.kicker');
       if (kicker) kicker.textContent = 'Part 3 · Pick your prompts';
+      const aiNote = prompts.querySelector('.how-to-use');
+      if (aiNote) aiNote.innerHTML = '<b>AI note:</b> If a result is close but still looks too polished or artificial, reply in the same chat with a short refinement such as “Make this more realistic. Keep my exact identity, pose, clothing and scene, but use natural skin texture, ordinary phone-camera detail and less AI polish.” You may need to do this a couple of times before you get the finished output.';
+    }
+
+    if (setup) {
+      const title = setup.querySelector('h2');
+      const intro = setup.querySelector('.intro');
+      if (title) title.textContent = 'Use AI to make the six photos in your profile.';
+      if (intro) intro.textContent = 'This section shows you how to set up the AI with photos of yourself, then use the prompts later in this guide to create each of the six profile photos.';
+      const route = setup.querySelector('.route');
+      if (route) {
+        route.querySelector('h3').textContent = 'Use AI to make your first profile photo';
+        route.querySelector('p').textContent = 'Upload your reference photos, paste a prompt, and choose the version that looks most like you. You do not need a paid tool to get started.';
+      }
+      const steps = setup.querySelectorAll('.steps .step');
+      if (steps[0]) {
+        steps[0].querySelector('h3').textContent = 'Open your AI image tool.';
+        const link = steps[0].querySelector('a');
+        if (link) link.textContent = 'Open the AI image tool →';
+      }
+      if (steps[1]) {
+        steps[1].querySelector('h3').textContent = 'Start a new chat and upload 10 photos.';
+        steps[1].querySelector('p').textContent = 'Use 10 current photos of yourself: different angles, different expressions, and at least one full-body shot. Clear reference photos give the AI a stronger version of your face and body. Leave out group shots, filters, sunglasses, face coverings, duplicates, and old photos.';
+      }
     }
   })();
 </script>
