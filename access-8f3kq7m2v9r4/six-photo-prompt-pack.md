@@ -1,6 +1,8 @@
 ### 30 Photo Generation Prompts
 
-Work through the prompts until you have one image you genuinely like for each photo slot. You can also use a photo already in your camera roll if it is stronger and fits that slot better. This does not need to be perfect on the first try: generate a few versions, then keep the one that feels most like you.
+30 copy-and-paste prompts for generating the coffee, outdoors, dog, smart-casual, hobby, and lifestyle photos that make up a strong dating profile. Attach your reference photos, choose the prompt that fits the photo you want, and generate your own version.
+
+Start from Photo 1, then work down to Photo 6 in order.
 
 Choose **one** of the prompts below. Each gives you a relaxed, clear café photo with a slightly different pose or setting.
 
