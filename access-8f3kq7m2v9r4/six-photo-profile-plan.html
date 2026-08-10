@@ -232,5 +232,10 @@
     }
   })();
 </script>
+<script>
+  document.querySelectorAll('.prompt').forEach((note) => {
+    if (note.textContent.includes('Every prompt in this guide starts with a likeness instruction')) note.remove();
+  });
+</script>
 </body>
 </html>

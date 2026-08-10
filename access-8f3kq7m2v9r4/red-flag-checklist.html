@@ -199,5 +199,46 @@
     if (finishCopy) finishCopy.textContent = 'Each time you make or find a new option, run it through the same five steps. That is how you stop endlessly swapping photos and start building a profile with a job for every image.';
   })();
 </script>
+<script>
+  (() => {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    const title = hero.querySelector('h1');
+    const lead = hero.querySelector('.lead');
+    const truth = hero.querySelector('.truth');
+    if (title) title.textContent = 'The “Don’t Upload That” Checklist.';
+    if (lead) lead.textContent = 'Use this on every photo before it earns a place on your profile. Tick the boxes honestly, then make one quick call: upload it, refine one thing, or leave it out.';
+    if (truth) truth.innerHTML = 'A photo does not need to be perfect. It needs to be <b>good enough to help your profile, and real enough to stand behind.</b>';
+
+    Array.from(document.querySelectorAll('main > section.page')).forEach((section) => {
+      if (section !== hero) section.style.display = 'none';
+    });
+
+    const checklist = document.createElement('section');
+    checklist.className = 'page';
+    checklist.innerHTML = `
+      <p class="kicker">Before you upload</p>
+      <h2>Tick these six boxes.</h2>
+      <p class="intro">Open one image. Do not compare your whole profile yet. Give yourself one point for every honest “yes.”</p>
+      <div style="margin-top:32px;border-top:1px solid #251b25">
+        ${[
+          ['01', 'Can she see me clearly?', 'My face is visible, current, and flattering at normal phone-screen size.'],
+          ['02', 'Does it look like me today?', 'My face, hair, body, age, and general style are recognisably mine.'],
+          ['03', 'Does it feel natural?', 'No waxy skin, strange hands, odd background detail, fake lighting, or polished AI look.'],
+          ['04', 'Does it do a useful job?', 'It is clearly my Hook, proof, life, style, date, or conversation-hook photo - not another version of the same thing.'],
+          ['05', 'Could I happily explain it?', 'The place, activity, clothes, and detail are things I would feel comfortable talking about in real life.'],
+          ['06', 'Would I be happy to meet someone who saw it?', 'It gets attention without creating a version of me I would have to explain away.']
+        ].map(([number, heading, copy]) => `<label style="display:grid;grid-template-columns:52px 1fr;gap:18px;align-items:start;padding:23px 0;border-bottom:1px solid #251b25;cursor:pointer"><input type="checkbox" style="appearance:none;width:42px;height:42px;margin:0;border:2px solid #4d265d;background:#fff;cursor:pointer" onchange="this.style.background=this.checked?'#4d265d':'#fff'" aria-label="${heading}"><span><h3 style="margin:0 0 6px">${heading}</h3><p style="margin:0;color:#625963;font-size:17px">${copy}</p></span></label>`).join('')}
+      </div>
+      <div class="outcomes" style="margin-top:32px">
+        <article class="outcome"><h3>5-6 points</h3><p><b>Upload it.</b> It is doing its job.</p></article>
+        <article class="outcome"><h3>4 points</h3><p><b>Refine it once.</b> Fix the one obvious issue, then check it again.</p></article>
+        <article class="outcome"><h3>0-3 points</h3><p><b>Leave it out.</b> Choose a stronger version and keep moving.</p></article>
+      </div>
+      <div class="check"><b>Final six check:</b> before you publish, make sure at least two photos show your face clearly, every photo adds something new, and one gives someone an easy thing to ask about.</div>
+    `;
+    hero.insertAdjacentElement('afterend', checklist);
+  })();
+</script>
 </body>
 </html>
