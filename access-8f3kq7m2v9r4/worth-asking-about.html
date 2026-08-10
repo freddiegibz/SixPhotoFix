@@ -187,5 +187,41 @@
     }
   })();
 </script>
+<script>
+  (() => {
+    const method = Array.from(document.querySelectorAll('main > section.page')).find((section) => section.querySelector('.kicker')?.textContent.trim() === 'The matchability method');
+    if (!method || method.querySelector('.finished-examples')) return;
+
+    const examples = document.createElement('div');
+    examples.className = 'finished-examples';
+    examples.innerHTML = `
+      <p class="kicker" style="margin-top:52px">More finished examples</p>
+      <h2>Here is what the blanks look like when they are filled in.</h2>
+      <p class="intro">Do not copy a life you do not have. Copy the shape: a real plan, a small preference, then an easy way for someone to reply.</p>
+
+      <h3 style="margin:34px 0 12px;font-size:26px">For Hinge or Bumble prompts</h3>
+      <div class="card-grid">
+        <article class="card"><h3>“My simple pleasures”</h3><p>“Trying a new coffee shop, taking the long way home, and finding a film worth putting my phone away for.”</p><div class="answer"><b>Easy reply</b><p>“What film was it?” or “You need to try…”</p></div></article>
+        <article class="card"><h3>“Typical Sunday”</h3><p>“A long walk, a late lunch somewhere that takes roast potatoes seriously, then pretending I will watch one episode.”</p><div class="answer"><b>Easy reply</b><p>“Where does the best roast?”</p></div></article>
+        <article class="card"><h3>“I’ll fall for you if”</h3><p>“You have a strong restaurant recommendation and are willing to defend it.”</p><div class="answer"><b>Easy reply</b><p>“Right, you have to try…”</p></div></article>
+        <article class="card"><h3>“The way to win me over is”</h3><p>“Suggesting a low-key plan, arriving with a snack recommendation, and not pretending to enjoy escape rooms.”</p><div class="answer"><b>Easy reply</b><p>“Escape rooms are great, actually.”</p></div></article>
+        <article class="card"><h3>“I know the best spot in town for”</h3><p>“A last-minute pint, a decent pasta dish, and a pub quiz team that needs help with the music round.”</p><div class="answer"><b>Easy reply</b><p>“I’m good at music rounds.”</p></div></article>
+        <article class="card"><h3>“I’m looking for”</h3><p>“Someone who is up for trying the new local place before it gets ruined by TikTok.”</p><div class="answer"><b>Easy reply</b><p>“I know exactly where we should go.”</p></div></article>
+      </div>
+
+      <h3 style="margin:46px 0 12px;font-size:26px">For a Tinder bio</h3>
+      <p class="intro">Tinder gives you less room. Use one or two details, not your whole personality. These are complete bios — use the one closest to your real life, then swap the one detail that is yours.</p>
+      <div class="card-grid">
+        <article class="card"><h3>Food + plan</h3><p>“Working my way through every good pizza place in the area. Taking recommendations seriously.”</p></article>
+        <article class="card"><h3>Easy weekend</h3><p>“Good coffee, long walks, live music when I can find it. Always open to a better local recommendation.”</p></article>
+        <article class="card"><h3>Light opinion</h3><p>“Firm believer that a pub quiz needs a music round. Looking for someone with a stronger geography game.”</p></article>
+        <article class="card"><h3>Warm and simple</h3><p>“Usually planning the next place to eat, the next walk to take, or the next film to watch. Tell me what I’m missing.”</p></article>
+      </div>
+      <div class="check"><b>Use them properly:</b> choose one answer that shows a plan, one that shows a light opinion, and one that gives a clear reply. If you use Tinder, choose one short bio instead. You do not need all of these.</div>
+    `;
+    const finalCheck = Array.from(method.children).find((item) => item.classList?.contains('check'));
+    (finalCheck || method.lastElementChild).before(examples);
+  })();
+</script>
 </body>
 </html>
