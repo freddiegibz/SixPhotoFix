@@ -1,93 +1,234 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Six-Photo Fix</title><style>
-:root{--ink:#251b25;--paper:#fffaf1;--plum:#4d265d;--lilac:#eee4f3;--lime:#c8f45a}*{box-sizing:border-box}body{margin:0;background:#ddd2c7;color:var(--ink);font:17px/1.55 Arial,sans-serif}.book{max-width:760px;margin:auto;background:var(--paper)}.page{min-height:760px;padding:48px 42px;border-bottom:1px solid var(--ink);display:flex;flex-direction:column;justify-content:center}.dark{background:var(--ink);color:#fff}.kicker{margin:0 0 12px;color:var(--plum);font:700 11px/1 monospace;letter-spacing:.1em;text-transform:uppercase}.dark .kicker{color:var(--lime)}h1,h2,h3{font-family:Georgia,serif;letter-spacing:-.045em;line-height:.98}h1{margin:0;font-size:clamp(52px,9vw,82px)}h2{margin:0 0 18px;font-size:clamp(38px,7vw,59px)}h3{margin:0 0 8px;font-size:29px}p{margin:0 0 18px}.lead{max-width:590px;font-size:20px}.box{margin-top:22px;padding:22px;background:var(--lilac);border-left:5px solid var(--plum)}.dark .box{background:#30243a;border-color:var(--lime)}.steps{margin-top:22px;border-top:1px solid var(--ink)}.dark .steps{border-color:#76677d}.step{display:grid;grid-template-columns:42px 1fr;gap:14px;padding:17px 0;border-bottom:1px solid var(--ink)}.dark .step{border-color:#76677d}.n{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--plum);color:#fff;font:12px/1 monospace}.dark .n{background:var(--lime);color:var(--ink)}.photo{display:grid;grid-template-columns:145px 1fr;gap:24px;align-items:start}.photo img{width:145px;aspect-ratio:4/5;object-fit:cover}.prompt{margin-top:22px;padding:19px;background:var(--ink);color:#fff;font:13px/1.55 monospace}.prompt b{display:block;margin-bottom:9px;color:var(--lime);font-size:11px;letter-spacing:.08em;text-transform:uppercase}.check{margin-top:18px;padding:17px;border:1px solid var(--plum)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card{padding:18px;background:#f0e7db}.bad{background:#30243a;color:#fff}.final{background:var(--plum);color:#fff}.final .kicker{color:var(--lime)}@media(max-width:560px){.page{min-height:680px;padding:38px 22px}.photo{grid-template-columns:100px 1fr;gap:16px}.photo img{width:100px}.grid{grid-template-columns:1fr}}
-</style><style>
-/* Editorial web-guide layer: continuous reading, not dashboard panels. */
-.page{min-height:0!important;display:block!important;padding:86px 54px!important;border-bottom:1px solid rgba(37,27,37,.22)!important}.dark,.final{padding-top:110px!important;padding-bottom:110px!important}.grid{display:block!important}.card,.bad{margin:0!important;padding:0 0 22px!important;background:transparent!important;color:inherit!important;border-bottom:1px solid rgba(37,27,37,.22)!important}.card h3{margin-top:22px}.box,.check{margin:32px 0 0!important;padding:0!important;background:transparent!important;border:0!important;border-left:0!important}.box b,.check b{color:var(--plum)}.dark .box b,.final .box b{color:var(--lime)}.steps{border:0!important;margin-top:30px!important}.step{padding:20px 0!important}.prompt{margin:32px 0!important;padding:22px 0!important;background:transparent!important;color:inherit!important;border-top:1px solid var(--ink)!important;border-bottom:1px solid var(--ink)!important;font-size:15px!important}.prompt b{color:var(--plum)!important}.photo{grid-template-columns:220px 1fr!important;gap:34px!important}.photo img{width:220px!important}.photo + .page{padding-top:36px!important}@media(max-width:560px){.page{padding:56px 24px!important}.photo{grid-template-columns:1fr!important}.photo img{width:100%!important;max-width:300px}.dark,.final{padding-top:76px!important;padding-bottom:76px!important}}
-.contents-list{margin:30px 0 0;padding:0;list-style:none;border-top:1px solid var(--ink)}.contents-list li{border-bottom:1px solid rgba(37,27,37,.22)}.contents-list a{display:flex;gap:18px;align-items:baseline;padding:14px 0;color:inherit;text-decoration:none}.contents-list a:hover{text-decoration:underline}.contents-list span{min-width:28px;color:var(--plum);font:700 11px/1 monospace;letter-spacing:.08em}.contents-list strong{font-family:Georgia,serif;font-size:21px;letter-spacing:-.02em}.contents-list em{margin-left:auto;color:#6f6268;font-size:14px;font-style:normal}
-.setup-copy{max-width:610px}.setup-copy h3{margin:42px 0 10px;font-size:30px}.setup-copy p{max-width:590px}.setup-copy .prompt{margin-top:34px!important}.next-link{display:inline-block;margin-top:14px;color:var(--plum);font-weight:700;text-decoration-thickness:2px;text-underline-offset:4px}
-</style></head><body><main class="book" id="book"></main><script>
-const photos=[
-['Your main photo','Gets her to stop and see the rest of your profile.','exemplar-01-hook.png','Create a natural close photo of me sitting at a café table near a window. I am wearing a dark overshirt over a plain T-shirt. I have just looked up toward the person taking the photo with a small, relaxed smile. Frame me from mid-torso up. Use soft daylight, natural skin texture, and ordinary phone-camera detail. It should look like someone sitting opposite took the photo, not a professional portrait.'],
-['A second look at you','Makes the first photo believable in a different moment.','exemplar-02-believe.png','Create a natural phone photo of me sitting at an outdoor table at a casual restaurant. I am looking up from a folded menu with a relaxed half-smile. Use a different outfit from my first photo, soft afternoon daylight, visible skin texture, and ordinary phone-camera framing.'],
-['What you do','Shows a normal part of your life, not another close-up.','exemplar-03-dog-on-sofa.png','Create a natural phone photo of me cooking dinner in a normal tidy kitchen. I am stirring pasta and turning toward the friend taking the photo with a small mid-laugh smile. Keep me clearly visible. Use warm kitchen light, ordinary clothes, and a lived-in but tidy background.'],
-['How you look when you go out','Shows your build and style without a mirror selfie.','exemplar-04-style.png','Create a natural full-body phone photo of me walking through a local street after leaving a bakery. I am carrying a small paper bag and looking back toward the friend taking the photo. Use a well-fitting casual outfit, normal daylight, realistic fabric creases, and no fashion-campaign pose.'],
-['A dateable moment','Makes an easy evening with you feel appealing.','exemplar-05-date.png','Create a natural phone photo of me at a relaxed outdoor pub table in early evening. I am reacting to something funny a friend said, looking across the table rather than at the camera. Use one drink, warm practical light, a normal outfit, and no nightclub or staged-laugh energy.'],
-['Something to ask about','Leaves a match with an easy first message.','exemplar-06-hook.png','Create a natural phone photo of me in a small independent record shop, pulling a vinyl record from a crate and looking at the cover. Keep my face visible, use warm shop lighting, ordinary phone-camera colour, and a believable everyday setting.']
-];
-const photoPages=photos.map((x,i)=>`<section class="page"><p class="kicker">Photo ${i+1} of 6</p><div class="photo"><img src="${x[2]}" alt="Example Photo ${i+1}"><div><h2>${x[0]}</h2><p>${x[1]}</p><p><b>We are aiming for:</b> ${i===0?'a clear face, normal light, and a relaxed expression.':i===5?'one visible detail somebody can ask you about.':'a different, useful side of you.'}</p></div></div></section><section class="page"><p class="kicker">Make Photo ${i+1}</p><h2>Copy this into Gemini.</h2><div class="prompt"><b>Prompt</b>${x[3]}</div><div class="check"><b>When it appears, check three things:</b><br>1. Does the face clearly look like you?<br>2. Does your current hair and facial hair look right?<br>3. Does this do what Photo ${i+1} is meant to do?<br><br><b>If yes:</b> save it as Photo ${i+1}.<br><b>If no:</b> send this: “Make this more realistic. Keep my exact face shape, current haircut and facial hair from the reference photos. Use natural skin texture and ordinary phone-camera detail.”</div></section>`).join('');
-document.querySelector('#book').innerHTML=`
-<section class="page dark"><p class="kicker">The Six-Photo Fix</p><h1>Build the six photos that get you matches.</h1><p class="lead">Open this with Gemini beside you. We will make one photo at a time, save the good ones, and finish with a profile ready to upload.</p><div class="box"><b>By the end, you will have:</b><br>Six photos ready to upload, the exact order to use them in, and three written answers that make matching easier.</div></section>
-<section class="page"><p class="kicker">Page 1 · What you are making</p><h2>Not six random photos. One complete profile.</h2><div class="steps">${photos.map((x,i)=>`<div class="step"><span class="n">0${i+1}</span><div><b>${x[0]}</b><br>${x[1]}</div></div>`).join('')}</div></section>
-<section class="page"><p class="kicker">Page 2 · The 10-Selfie Method</p><h2>First, give Gemini a clear picture of you.</h2><p class="lead">These are called reference photos. Gemini uses them to keep your face, hair, body, and age consistent in the photos we make next.</p><div class="steps"><div class="step"><span class="n">3</span><div><b>Clear face photos</b><br>Close, uncovered, current photos where your face is easy to see.</div></div><div class="step"><span class="n">2</span><div><b>Different angles</b><br>Photos from a slight angle, not ten versions of the same selfie.</div></div><div class="step"><span class="n">2</span><div><b>Relaxed expressions</b><br>Normal smiles or natural expressions.</div></div><div class="step"><span class="n">2</span><div><b>More of your body</b><br>Photos that show your build and proportions.</div></div><div class="step"><span class="n">1</span><div><b>Your current look</b><br>Your current haircut and facial hair.</div></div></div></section>
-<section class="page"><p class="kicker">Page 3 · Choose the right 10</p><h2>Use clear photos. Leave the confusing ones out.</h2><div class="grid"><div class="card"><h3>Use</h3>Recent photos<br>Face clearly visible<br>Normal light<br>Different angles<br>At least one full-body photo</div><div class="card bad"><h3>Leave out</h3>Group photos<br>Sunglasses<br>Heavy filters<br>Old haircuts<br>Photos where you are tiny</div></div><div class="box"><b>Good enough:</b> if a friend saw these 10 photos, they would know exactly what you look like today.</div></section>
-<section class="page"><p class="kicker">Page 4 · Open Gemini</p><h2>Set this up once. Then we make the photos.</h2><div class="steps"><div class="step"><span class="n">01</span><div><b>Open Gemini.</b><br><a href="https://gemini.google.com/" target="_blank">Open Gemini →</a></div></div><div class="step"><span class="n">02</span><div><b>Start a new chat.</b><br>Upload all 10 reference photos together.</div></div><div class="step"><span class="n">03</span><div><b>Paste this message.</b><br>It tells Gemini what must stay consistent in every photo.</div></div></div><div class="prompt"><b>Paste this once</b>I am creating dating-profile photos using these reference photos. Keep my face shape, current haircut, facial hair, skin tone, body type, and age consistent across every image. The photos need to look like natural phone-camera photos, not polished AI portraits.</div></section>
-${photoPages}
-<section class="page"><p class="kicker">Before you upload</p><h2>Catch the tiny AI mistakes first.</h2><div class="steps"><div class="step"><span class="n">01</span><div><b>Face:</b> it looks exactly like you now.</div></div><div class="step"><span class="n">02</span><div><b>Eyes and skin:</b> they look awake, natural, and human.</div></div><div class="step"><span class="n">03</span><div><b>Hands and body:</b> no strange fingers, teeth, proportions, or clothes.</div></div><div class="step"><span class="n">04</span><div><b>Background:</b> no warped objects, nonsense text, or odd reflections.</div></div><div class="step"><span class="n">05</span><div><b>Whole image:</b> it could pass as a real photo on your camera roll.</div></div></div><div class="box"><b>Five easy yeses:</b> keep it. One obvious no: regenerate that photo. Do not upload an image you have to explain away.</div></section>
-<section class="page"><p class="kicker">Upload your profile</p><h2>Put them in this exact order.</h2><div class="steps">${photos.map((x,i)=>`<div class="step"><span class="n">0${i+1}</span><div><b>${x[0]}</b><br>${x[1]}</div></div>`).join('')}</div><div class="box"><b>Do this now:</b> open Tinder, Bumble, or Hinge and replace the old photos with these six.</div></section>
-<section class="page"><p class="kicker">Finish the written part</p><h2>Give her something to say after she stops.</h2><div class="steps"><div class="step"><span class="n">01</span><div><b>A date she can picture</b><br>“A good Sunday is a long walk followed by finding somewhere that takes roast potatoes seriously.”</div></div><div class="step"><span class="n">02</span><div><b>A light opinion</b><br>“I will stand by this: a pub quiz needs a music round. Happy to hear the case for anything else.”</div></div><div class="step"><span class="n">03</span><div><b>An easy first message</b><br>“I’m looking for someone who is up for trying the new local place before it gets ruined by TikTok.”</div></div></div><div class="box"><b>Hinge or Bumble:</b> use all three. <b>Tinder:</b> use one as your bio.</div></section>
-<section class="page"><p class="kicker">If you get stuck</p><h2>Use the problem you can see.</h2><div class="steps"><div class="step"><span class="n">A</span><div><b>Wrong face, hair, or age:</b> add two clearer current reference photos, then use the correction message again.</div></div><div class="step"><span class="n">B</span><div><b>Plastic skin, strange hands, fake background:</b> regenerate that image. Do not rescue a visibly artificial one.</div></div><div class="step"><span class="n">C</span><div><b>Too many almost-good versions:</b> choose the one that looks most like you and does the slot’s job. Move on.</div></div></div></section>
-<section class="page final"><p class="kicker">You are done</p><h2>Your six-photo profile is ready.</h2><p class="lead">Check that six photos are uploaded in order, every photo looks like you, and your written answers are in place.</p><div class="box"><b>Now leave the profile live.</b><br>Do not spend another week moving the same photos around. You have built the profile you came here for: one that gives women a reason to stop, keep looking, and match.</div></section>`;
-</script><script>
-const book=document.querySelector('#book');const last=book.lastElementChild;
-last.insertAdjacentHTML('beforebegin','<section class="page"><p class="kicker">Optional extra prompts</p><h2>Use these once your first six are working.</h2><p class="lead">You do not need more options to finish today. These are here if one of the six scenes does not fit your life.</p><div class="grid"><div class="card"><h3>Outdoors</h3>Park walk, dog walk, post-activity coffee, coastal café.</div><div class="card"><h3>City</h3>Local street, coffee shop, pub table, record shop.</div><div class="card"><h3>Social</h3>After a game, street food, relaxed drinks, local event.</div><div class="card"><h3>Smart-casual</h3>Restaurant table, gallery night, weekend market, dinner out.</div></div></section><section class="page"><p class="kicker">One last check</p><h2>Look at the six together.</h2><div class="steps"><div class="step"><span class="n">01</span><div><b>Two clear views of you</b><br>Your first two photos should make you easy to recognise.</div></div><div class="step"><span class="n">02</span><div><b>Four new things</b><br>The other photos should show life, style, a dateable moment, and one conversation hook.</div></div><div class="step"><span class="n">03</span><div><b>No duplicates</b><br>If two photos do the same thing, keep the stronger one.</div></div></div></section>');
-</script><script>
-const guideSections=[...book.querySelectorAll('.page')];
-const sectionFor=(heading)=>guideSections.find((section)=>section.querySelector('h2')?.textContent.trim()===heading);
-const addId=(heading,id)=>{const section=sectionFor(heading);if(section)section.id=id};
-addId('Not six random photos. One complete profile.','six-photos');
-addId('First, give Gemini a clear picture of you.','reference-photos');
-addId('Set this up once. Then we make the photos.','setup');
-addId('Catch the tiny AI mistakes first.','quality-check');
-addId('Put them in this exact order.','upload');
-addId('Give her something to say after she stops.','written-profile');
-addId('Use the problem you can see.','stuck');
-guideSections.forEach((section)=>{const label=section.querySelector('.kicker')?.textContent.trim();const match=label?.match(/^Photo (\d) of 6$/);if(match)section.id=`photo-${match[1]}`});
-book.firstElementChild.insertAdjacentHTML('afterend',`<section class="page" id="contents"><p class="kicker">Contents</p><h2>Start where you are.</h2><p class="lead">If you are new to this, begin with your reference photos. If they are ready, jump straight to the setup and make Photo 1.</p><nav aria-label="Guide contents"><ol class="contents-list"><li><a href="#six-photos"><span>01</span><strong>The six photos</strong><em>See the finished sequence</em></a></li><li><a href="#reference-photos"><span>02</span><strong>Your 10 reference photos</strong><em>Choose what to upload</em></a></li><li><a href="#setup"><span>03</span><strong>Set up Gemini</strong><em>One-time setup</em></a></li><li><a href="#photo-1"><span>04</span><strong>Make the six photos</strong><em>One at a time</em></a></li><li><a href="#quality-check"><span>05</span><strong>Check the finished images</strong><em>Catch the obvious mistakes</em></a></li><li><a href="#upload"><span>06</span><strong>Upload in order</strong><em>Build the profile</em></a></li><li><a href="#written-profile"><span>07</span><strong>Finish the written part</strong><em>Give her something to say</em></a></li><li><a href="#stuck"><span>08</span><strong>If something looks wrong</strong><em>Fix the visible problem</em></a></li></ol></nav></section>`);
-</script><script>
-const oldReferenceSection=sectionFor('First, give Gemini a clear picture of you.');
-const oldChoiceSection=sectionFor('Use clear photos. Leave the confusing ones out.');
-const oldSetupSection=sectionFor('Set this up once. Then we make the photos.');
-oldReferenceSection?.insertAdjacentHTML('beforebegin',`<section class="page" id="reference-photos"><p class="kicker">Before we start Â· Your reference photos</p><h2>Give Gemini enough pictures to recognise you.</h2><div class="setup-copy"><p class="lead">Before it can make a good dating photo, it needs a clear idea of what you look like now. The photos you give it are called reference photos. They are not going on your profile. They are simply the photos Gemini looks at while it makes the new ones.</p><p>Open your phoneâ€™s camera roll and make a small album called <b>Dating profile references</b>. Add ten recent photos of yourself. Start with three close, clear photos where your face is fully visible. Add two photos from slightly different angles, two where you have a relaxed expression, two that show more of your body, and one that shows your current haircut and facial hair particularly clearly.</p><p>Do not overthink the exact mix. We are giving it enough information to keep the same face, build, hair and age from photo to photo. Avoid group shots, sunglasses, heavy filters, old haircuts and holiday photos where you are too small to see. You have the right ten when a stranger could look through the album and know exactly what you look like today.</p></div></section><section class="page" id="setup"><p class="kicker">Open Gemini for the first time</p><h2>Start one new chat and add your reference photos.</h2><div class="setup-copy"><p class="lead">You can do this on your phone or on a laptop. Use whichever makes it easier to find and upload your photos.</p><h3>On your phone</h3><p>Download the Gemini app from the App Store or Google Play if you do not already have it. Open it and sign in with your normal Google account. At the bottom of the screen, tap the <b>plus</b> or <b>image</b> icon beside the message box. Choose <b>Photos</b> or <b>Gallery</b>, open the album you just made, and select the ten reference photos.</p><h3>On a laptop</h3><p>Go to <a href="https://gemini.google.com/" target="_blank">gemini.google.com</a> and sign in. If an old conversation opens, choose <b>New chat</b> from the menu. Click <b>Add files</b> beside the message box, then choose <b>Upload files</b>. Find the ten photos you collected and select them together.</p><p>If the app will only let you add a few images at once, start with the clearest four. Send the message below, then attach the next few images in the <b>same chat</b> and write: â€œAdd these as more reference photos for my face and current appearance.â€ Keep using that chat for all six photos.</p><div class="prompt"><b>Paste this after the photos are attached</b>I am creating dating-profile photos using these reference photos. Keep my face shape, current haircut, facial hair, skin tone, body type, and age consistent across every image. The photos need to look like natural phone-camera photos, not polished AI portraits.</div><p>Press send. You do not need a perfect reply from Gemini. Once it has acknowledged the photos, the setup is finished.</p><a class="next-link" href="#photo-1">Now make Photo 1 â†’</a></div></section>`);
-oldReferenceSection?.remove();
-oldChoiceSection?.remove();
-oldSetupSection?.remove();
-</script><script>
-const lockedPrompts=[
-`Using my uploaded reference photos, create a close candid portrait of me sitting at a small independent café table beside a window. I am wearing a dark overshirt over a plain T-shirt. A coffee is on the table. I have just looked up from the table toward the person taking the photo, with a small natural smile. Frame from mid-torso to above my head; my face and shoulders fill most of the vertical 4:5 photo. Soft daylight from the window, warm café interior, a few blurred people behind me. It should look like a flattering phone photo someone sitting opposite took, not a professional portrait. Keep my face, current hair, age and skin tone exactly like the uploaded photos. Natural skin texture, no airbrushing, no studio light, no fake bokeh.`,
-`Using my uploaded reference photos, create a close candid portrait of me sitting at a rustic café table beside a large window. I am wearing a dark jacket over a charcoal T-shirt. A coffee and an open newspaper sit in front of me. I am looking down at the newspaper with a small genuine smile, not looking at the camera. Frame from mid-torso to above my head; I fill most of the vertical 4:5 photo. Brick wall, warm hanging lights and a couple of soft blurred café customers behind me. It feels like someone across the table took one quick flattering phone photo. Keep my uploaded face, haircut, age and skin tone exactly. Natural warm colour, real skin texture, no text readable on the newspaper, no plastic skin or editorial styling.`,
-`Using my uploaded reference photos, create a close candid phone photo of me in a normal tidy kitchen while cooking dinner. I am standing by the hob with a wooden spoon in one hand, looking down at the pan with a natural small smile. Frame from mid-thigh to above my head; I fill most of the vertical 4:5 image. I wear a plain T-shirt and dark trousers. A lemon, herbs and a saucepan are visible on the counter, with warm kitchen light and a lived-in background. It should look like a friend took the photo while we were talking in the kitchen. Keep my face and current appearance exactly. Real skin texture and normal phone colour. No chef outfit, luxury flat, food advert or posed cooking scene.`,
-`Using my uploaded reference photos, create a close candid portrait of me sitting in a relaxed restaurant booth before dinner. I am wearing a fitted dark overshirt over a plain T-shirt, with dark trousers visible below the table. The friend taking the photo has caught me leaning back slightly in the booth, looking down and smiling at something they just said. Frame from upper thigh to above my head; I fill most of the vertical 4:5 image. A water glass, small menu and warm restaurant lights sit around the edge of the frame. Make it feel like a flattering phone photo someone across the table took, not an outfit photo. Keep my uploaded face, body and current appearance exactly. Natural skin texture, normal phone colour, no fashion campaign, no posed hands.`,
-`Using my uploaded reference photos, create a close candid portrait of me sitting at a relaxed bar table in the evening. I am wearing a plain dark T-shirt and simple chain. I have just laughed at something the person opposite said, so I am looking slightly past the camera with a real open smile. Frame from chest to above my head; I fill most of the vertical 4:5 image. One wine glass is partly visible at the bottom of the frame, with warm bar lights and a softly blurred crowd behind me. It should look like a flattering phone photo taken across the table, not a posed portrait or nightclub campaign. Keep my uploaded face, current hair, age and skin tone exactly. Natural skin texture, warm low-light phone colour, no plastic skin or artificial bokeh.`,
-`Using my uploaded reference photos, create a close candid phone photo inside a small independent record shop. I am standing beside a wooden record bin, holding one vinyl sleeve at chest height and looking down at the cover with a naturally interested expression. Frame from mid-thigh to above my head; I fill most of the vertical 4:5 image. I wear a dark green overshirt over a faded black T-shirt. Warm shop lights, record sleeves and blurred handwritten shelf labels behind me. It should look like a friend took the picture because I found something good, not a music-video still. Keep my uploaded face and current appearance exactly. Real pores, hair texture and everyday phone colour. No showroom, no DJ pose, no fake vintage filter.`
-];
-[...document.querySelectorAll('.photo')].forEach((photo,index)=>{const prompt=photo.parentElement.nextElementSibling?.querySelector('.prompt');if(prompt)prompt.innerHTML='<b>Copy this into Gemini</b>'+lockedPrompts[index]});
-</script><script src="original-prompt-options.js"></script><script>
-document.head.insertAdjacentHTML('beforeend','<style>.prompt-options{margin-top:8px}.prompt-option{padding:25px 0;border-top:1px solid rgba(37,27,37,.34)}.prompt-option:first-child{margin-top:20px}.option-label{margin:0 0 10px!important;color:var(--plum);font:700 11px/1 monospace!important;letter-spacing:.08em;text-transform:uppercase}.prompt-option p:last-child{margin:0!important;font:15px/1.6 monospace!important;white-space:pre-wrap}.prompt b:first-child{margin-bottom:18px!important}</style>');
-if(Array.isArray(window.originalPromptOptions)){
-  [...document.querySelectorAll('.photo')].forEach((photo,index)=>{
-    const prompt=photo.parentElement.nextElementSibling?.querySelector('.prompt');
-    const role=window.originalPromptOptions[index];
-    if(!prompt||!role)return;
-    prompt.innerHTML='<b>Choose one prompt for this photo</b><div class="prompt-options"></div>';
-    const options=prompt.querySelector('.prompt-options');
-    role.options.forEach((option)=>{
-      const item=document.createElement('div');item.className='prompt-option';
-      const label=document.createElement('p');label.className='option-label';label.textContent=option.label;
-      const copy=document.createElement('p');copy.textContent=option.prompt;
-      item.append(label,copy);options.append(item);
-    });
-  });
-}
-</script><script>
-const writtenSection=sectionFor('Give her something to say after she stops.');
-if(writtenSection)writtenSection.innerHTML=`<p class="kicker">Finish the written part</p><h2>Give her something to say after she stops.</h2><div class="steps"><div class="step"><span class="n">01</span><div><b>Iâ€™ve got a running list of places to try in this city. The next one needs a second opinion.</b></div></div><div class="step"><span class="n">02</span><div><b>I make a very convincing case for going out for one drink and accidentally staying for dinner.</b></div></div><div class="step"><span class="n">03</span><div><b>My ideal Sunday involves doing one useful thing, eating something good, and pretending that counts as balance.</b></div></div><div class="step"><span class="n">04</span><div><b>Iâ€™m always looking for a new walk, pub, coffee place, or meal worth becoming slightly annoying about.</b></div></div><div class="step"><span class="n">05</span><div><b>I take recommendations seriously. Especially if they involve food, films, or somewhere I can bring a dog.</b></div></div></div><p class="kicker" style="margin-top:48px">Make it your own</p><div class="steps"><div class="step"><span class="n">A</span><div><b>Iâ€™m currently trying to find the best [food / coffee / pub / walk] in [your area]. [Your current favourite] is winning, but Iâ€™m open to being proved wrong.</b></div></div><div class="step"><span class="n">B</span><div><b>A good [Sunday / Friday night / first date] is [a real plan you enjoy], followed by [food, drink, or small ritual].</b></div></div><div class="step"><span class="n">C</span><div><b>I will stand by this: [a light opinion about food, music, sport, films, or your city]. Happy to hear the case for [the opposing view].</b></div></div></div>`;
-sectionFor('Use these once your first six are working.')?.remove();
-</script><script>
-const characterRepairs=[
-  ['\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2','\u2019'],['\u00c2\u00b7','\u00b7'],['\u00c3\u00a9','\u00e9'],
-  ['\u00e2\u20ac\u2122','\u2019'],['\u00e2\u20ac\u0153','\u201c'],['\u00e2\u20ac\u009d','\u201d'],['\u00e2\u2020\u2192','\u2192']
-];
-const textNodes=document.createTreeWalker(book,NodeFilter.SHOW_TEXT);const visibleText=[];
-while(textNodes.nextNode())visibleText.push(textNodes.currentNode);
-visibleText.forEach((node)=>{let value=node.nodeValue;characterRepairs.forEach(([broken,correct])=>value=value.split(broken).join(correct));node.nodeValue=value});
-</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Six-Photo Profile Plan</title>
+<style>
+:root{--ink:#172026;--muted:#59666c;--line:#dbe2df;--paper:#fffdf9;--ground:#edf1ee;--accent:#54756d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--ground);color:var(--ink);font:18px/1.72 Georgia,"Times New Roman",serif}.page{max-width:850px;margin:40px auto;background:var(--paper);padding:72px 92px 92px;box-shadow:0 18px 55px rgba(20,36,34,.12)}h1,h2,h3{font-family:Arial,Helvetica,sans-serif;line-height:1.12;letter-spacing:-.025em}h1{margin:72px 0 28px;padding-top:12px;border-top:5px solid var(--ink);font-size:clamp(38px,7vw,62px);text-transform:none}h1:first-child{margin-top:0;border-top:0;padding-top:0}h2{margin:54px 0 18px;font-size:30px}h3{margin:42px 0 14px;font-size:22px}p{margin:0 0 19px}ul{margin:0 0 24px;padding-left:25px}li{margin:7px 0}strong{font-family:Arial,Helvetica,sans-serif;font-size:.94em}code{padding:2px 5px;background:#eef2ef;color:#3d514b;font:14px/1.35 ui-monospace,SFMono-Regular,Consolas,monospace}.good-example{margin-top:48px;padding-top:1px;border-top:1px solid var(--line)}.good-example figure{margin:22px 0 27px}.good-example img{display:block;width:100%;max-height:560px;object-fit:cover;border-radius:2px}.good-example h3{color:var(--accent)}h3 + p strong:first-child{font-family:Arial,Helvetica,sans-serif;font-size:.8em;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}@media(max-width:700px){body{font-size:17px}.page{margin:0;padding:44px 24px 64px;box-shadow:none}h1{margin-top:55px;font-size:42px}h2{font-size:28px}}@media print{body{background:#fff}.page{max-width:none;margin:0;padding:0;box-shadow:none}h1{break-before:page}h1:first-child{break-before:auto}h2,h3{break-after:avoid}.good-example{break-inside:avoid}.good-example img{max-height:480px}}
+</style>
+<style>.exemplar{margin:22px 0 27px}.exemplar img{display:block;width:100%;max-height:560px;object-fit:cover;border-radius:2px}@media print{.exemplar{break-inside:avoid}.exemplar img{max-height:480px}}</style>
+<style>.sequence-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0 32px}.sequence-gallery img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2px}@media(max-width:700px){.sequence-gallery{grid-template-columns:repeat(2,1fr)}}@media print{.sequence-gallery{break-inside:avoid}}</style>
+<style>.sequence-section{scroll-margin-top:24px}</style>
+</head>
+<body><main class="page">
+<h1 id="intro">INTRO</h1>
+<p>Most men open their dating apps, see no matches, and start thinking the problem is their looks.</p>
+
+<p>It usually is not.</p>
+
+<p>The problem is that their profile gives nobody a reason to stop. It is the same badly angled mirror selfie, the group photo where nobody can tell which one you are, and the blurry night-out picture that looked better in your camera roll than it does on a dating app.</p>
+
+<p>So girls swipe past before they ever get a proper look at you.</p>
+
+<p>Dating apps have changed. Great photos are no longer something you need to spend hundreds of pounds on in a photoshoot to get. With AI, they are now quick and affordable to make.</p>
+
+<p>The problem is that nobody shows you how to use it properly: how to create photos that actually look believable, what strong dating-app photos look like, or how to order them so hot girls stop, scroll, and swipe right.</p>
+
+<p>That is exactly why we made this product.</p>
+
+<p>It gives you:</p>
+
+<ul>
+<li>Three ways to create high-quality AI images: one free, one paid, and one if you already have a ChatGPT membership.</li>
+<li>20 examples of what good dating-app photos look like.</li>
+<li>Five explanations of the exact photos killing your account.</li>
+<li>20 prompts you can use to create stronger photos for yourself.</li>
+<li>The six-photo sequence that gives each photo a job: get attention, build interest, and give her a reason to message.</li>
+</ul>
+
+<p>By the end of this product, your dating profile will not be average&mdash;and your matches will not be either.</p>
+
+<h2>A good photo is not automatically a good dating-app photo</h2>
+
+<p>A photo can be sharp, well lit, and professionally taken&mdash;and still be a bad dating-app photo.</p>
+
+<p>And a photo can be slightly imperfect, taken on someone&rsquo;s phone, and still be the one that gets the swipe right.</p>
+
+<p>You are not putting together a photography portfolio. You are trying to get girls you actually like to look at a few photos and feel like you are someone worth meeting.</p>
+
+<p>That will not happen because your photo has more pixels.</p>
+
+<p>It happens when your photos do three things:</p>
+
+<ol>
+<li>Make it immediately clear what you look like.</li>
+<li>Make you seem attractive, relaxed, and like someone she would enjoy spending time with.</li>
+<li>Show enough of your life to give her a reason to be curious&mdash;and a reason to message.</li>
+</ol>
+
+<p>That is exactly what this product teaches you to do.</p>
+
+<h1 id="good-and-bad">What Good and Bad Dating-App Photos Look Like</h1>
+
+<h2>GOOD &amp; BAD EXAMPLES</h2>
+
+<h2>WHY MOST MEN'S DATING PROFILES SUCK (AND WHY YOURS WON'T)</h2>
+
+<p>A lot of men's dating-app profiles suck because most of us don't have photoshoot-level photos sitting randomly on our phones.</p>
+
+<p>What we do have is a few pics with our friends where you can't see our faces, mirror selfies, and blurry photos from nights out.</p>
+
+<p>Those are great memories, but they don't work well as first impressions when we're trying to make that hot girl think we're fun, interesting, and someone worth talking to.</p>
+
+<p>Run this quick scan on your profile to see whether you're suffering from the five main failure modes of the average men's account:</p>
+
+<h3>Failure 1: A first photo where she can't clearly tell what you look like or who you are&#x2014;or you lead with a mirror selfie</h3>
+
+<p><strong>Why this is bad:</strong><br></p>
+<p>The first few seconds decide whether she keeps looking or skips. If she can't instantly understand what you look like, the rest of your profile may never get seen.</p>
+
+<p><strong>Severity = STRONG.</strong></p>
+
+<h3>Failure 2: Every photo looks basically the same</h3>
+
+<p><strong>Why this is bad:</strong><br></p>
+<p>Five selfies, five headshots, or five photos in the same type of setting don't tell her anything new about you. A strong profile should make you feel like a real person with a life, not the same face repeated six times.</p>
+
+<p><strong>Severity = MEDIUM.</strong></p>
+
+<h3>Failure 3: Your photos make your life look boring or empty</h3>
+
+<p><strong>Why this is bad:</strong><br></p>
+<p>Your photos aren't just showing what you look like. They're showing what being around you might feel like. If every photo is in your bedroom, your car, or standing against a wall, there's very little for her to imagine herself joining.</p>
+
+<p><strong>Severity = STRONG.</strong></p>
+
+<h3>Failure 4: Group photos make her work out which person you are</h3>
+
+<p><strong>Why this is bad:</strong><br></p>
+<p>A group photo can be useful later in the profile, but if she has to inspect the image to work out who she's actually matching with, you've created friction for no reason. And if one of your friends is more visually striking, you've accidentally made them part of the comparison.</p>
+
+<p><strong>Severity = MEDIUM.</strong></p>
+
+<h3>Failure 5: You don't have a photo that makes you look attractive and approachable</h3>
+
+<p><strong>Why this is bad:</strong><br></p>
+<p>A lot of men's profiles swing too far one way: stiff, serious photos or messy, low-effort photos. You need at least one image where your face is clear, you look relaxed, and you seem like someone she'd actually enjoy meeting.</p>
+
+<p><strong>Severity = STRONG.</strong></p>
+
+<p>Here is what that looks like when you get it right.</p>
+
+<h2>GOOD EXAMPLE 1: IT LOOKS LIKE SOMEONE ELSE TOOK IT</h2>
+<figure class="exemplar"><img src="images/gexemplar2.png" alt="Good dating-app photo example"></figure>
+
+<p><strong>Why this works:</strong><br></p>
+<p>He's in a real setting, doing something normal, and it feels like another person took the photo rather than him setting it up himself.</p>
+
+<p>The caf&#xe9; gives the image some lifestyle context, but it doesn't overpower him. You can clearly see his face, he looks relaxed, and the smile makes him feel warm and approachable.</p>
+
+<p>Most importantly, the photo tells you something about what spending time with him might actually feel like.</p>
+
+<p><strong>What to copy:</strong><br></p>
+<p>Choose a setting you'd genuinely spend time in, have someone else take the photo, keep your face clear, and aim for a natural expression rather than a pose.</p>
+
+<p><strong>Strength = VERY STRONG.</strong></p>
+
+<h2>GOOD EXAMPLE 2: GIVE HER SOMETHING TO BE CURIOUS ABOUT</h2>
+<figure class="exemplar"><img src="images/gexemplar1.png" alt="Good dating-app photo example"></figure>
+
+<p><strong>Why this works:</strong><br></p>
+<p>The setting immediately makes the photo feel more interesting. It suggests travel, a nice evening out, or somewhere worth being without having to explain any of it.</p>
+
+<p>The outfit helps too. He looks well put together without looking like he dressed specifically for a dating profile.</p>
+
+<p>And because he isn't staring straight at the camera, the photo feels like a moment rather than a pose. It leaves a little unanswered&#x2014;where is he, what's he doing there, and who took the photo?</p>
+
+<p>That curiosity gives her more reason to stop and look at the rest of the profile.</p>
+
+<p><strong>What to copy:</strong><br></p>
+<p>Use an interesting setting, wear something simple but sharp, and don't feel like every photo needs direct eye contact. Sometimes the best photo gives a glimpse of your life instead of explaining everything.</p>
+
+<p><strong>Strength = VERY STRONG.</strong></p>
+
+<h2>GOOD EXAMPLE 3: DOG PHOTOS</h2>
+<figure class="exemplar"><img src="images/gexemplar3.png" alt="Good dating-app photo example with a dog"></figure>
+
+<p><strong>Why this works:</strong><br></p>
+<p>Dog photos are one of the strongest easy wins you can add to a dating profile.</p>
+
+<p>They make you look warmer, more caring, and more approachable. They also give the photo a natural reason to exist, so it feels less staged than another picture of you standing around posing.</p>
+
+<p>There are plenty of women who say they only swipe right on profiles that have dog photos.</p>
+
+<p>This example works because it feels natural. He's outdoors, relaxed, and the dog makes the shot feel like part of his life rather than something created for Tinder.</p>
+
+<p><strong>What to copy:</strong><br></p>
+<p>Get a natural photo of you actually interacting with the dog. Don't just stand next to it looking at the camera.</p>
+
+<p><strong>Strength = VERY STRONG.</strong></p>
+
+<p>This product's goal is to move you away from the bad examples and towards a profile using tested, proven photo types that get you more matches.</p>
+
+
+<section id="six-photo-sequence" class="sequence-section">
+<h3>The Six-Photo Sequence</h3>
+<figure class="sequence-gallery" aria-label="Example six-photo dating profile sequence"><img src="images/six-sequence/1.png" alt="Example sequence photo 1"><img src="images/six-sequence/2.png" alt="Example sequence photo 2"><img src="images/six-sequence/3.png" alt="Example sequence photo 3"><img src="images/six-sequence/4.png" alt="Example sequence photo 4"><img src="images/six-sequence/5.png" alt="Example sequence photo 5"><img src="images/six-sequence/6.png" alt="Example sequence photo 6"></figure>
+
+<p>The six-photo sequence is what turns a profile from a random set of decent pictures into something that actually works together.</p>
+
+<p>Each photo has a different job. Your first photo gets attention. The next few build attraction, show different sides of you, and make your life feel more interesting. The final photo gives her an easy reason to start a conversation.</p>
+
+<p>You do not need all six photos for this to make a difference. If your current profile is weak, even replacing two or three bad photos with stronger ones from this guide can massively improve it.</p>
+
+<p>But if you want the strongest version of your profile, use the full sequence.</p>
+
+<p>You are not just trying to upload six decent pictures of yourself.</p>
+
+<p>You are trying to control the order she sees them in and what each one makes her think.</p>
+
+<p>This is how it works:</p>
+
+<p>Your first photo has one job:</p>
+
+<p><strong>Stop the swipe.</strong></p>
+
+<p>It needs to make it immediately obvious what you look like and give her a reason to keep looking.</p>
+
+<p>The next few photos then do the heavier lifting.</p>
+
+<p>They show different sides of you. They build interest. They make you look like someone with a life, personality, and things going on.</p>
+
+<p>By the time she gets deeper into the profile, she should have a much clearer picture of what being around you might actually feel like.</p>
+
+<p>Then the final photo should leave something open&#x2014;something that gives her an easy reason to message you.</p>
+
+<p>A weird location. A dog. A hobby. Something happening in the background. Something she can ask about without having to invent a conversation starter from nothing.</p>
+
+<p>So the sequence works like this:</p>
+
+<p><strong>Photo 1 &#x2014; Stop the swipe</strong><br></p>
+<p>Clear face. Strong expression. You look good. No confusion.</p>
+
+<p><strong>Photo 2 &#x2014; Build attraction</strong><br></p>
+<p>A stronger setting or outfit. Something that makes you look put together and gives the profile a bit more depth.</p>
+
+<p><strong>Photo 3 &#x2014; Show personality</strong><br></p>
+<p>Dog, hobby, activity, caf&#xe9;, record shop&#x2014;something that actually says something about you.</p>
+
+<p><strong>Photo 4 &#x2014; Show lifestyle</strong><br></p>
+<p>Travel, outdoors, a social setting, dinner, somewhere interesting. This helps her imagine what your life actually looks like.</p>
+
+<p><strong>Photo 5 &#x2014; Add another side of you</strong><br></p>
+<p>Something different from the first four. If everything so far is polished, this can be more relaxed. If everything is casual, this can be smarter.</p>
+
+<p><strong>Photo 6 &#x2014; Give her something to ask about</strong><br></p>
+<p>Finish with something that naturally creates curiosity or gives her an obvious conversation starter.</p>
+
+<p>The important thing is that each photo earns its place.</p>
+
+<p>If photos 2, 3, and 4 all basically say the same thing, you're wasting slots.</p>
+
+<p>A good sequence should feel like she is learning something new about you as she moves through the profile.</p>
+
+<p><strong>Photo 1 gets attention.</strong><br></p>
+<p><strong>Photos 2&#x2013;5 build the picture.</strong><br></p>
+<p><strong>Photo 6 gives her a reason to start talking.</strong></p>
+
+<p>Before you create them, you need to give the AI a clear set of reference photos.</p>
+</section>
+
+
+</main></body></html>
