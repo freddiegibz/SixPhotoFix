@@ -240,5 +240,43 @@
     hero.insertAdjacentElement('afterend', checklist);
   })();
 </script>
+<script>
+  (() => {
+    const hero = document.querySelector('.hero');
+    const checklist = Array.from(document.querySelectorAll('main > section.page')).find((section) => section.querySelector('.kicker')?.textContent.trim() === 'Before you upload');
+    if (hero) {
+      const kicker = hero.querySelector('.kicker');
+      const title = hero.querySelector('h1');
+      const lead = hero.querySelector('.lead');
+      if (kicker) kicker.textContent = 'Use this whenever you are nearly ready to upload';
+      if (title) title.textContent = 'A quick final check for any photo you are considering.';
+      if (lead) lead.textContent = 'You do not need a perfect answer to every question. These six checks just help you feel more certain about the photo you choose.';
+    }
+    if (checklist) {
+      const intro = checklist.querySelector('.intro');
+      if (intro) intro.textContent = 'Look at one photo at a time. Tick a box when the answer feels like an easy yes. If you are torn, that is useful information too.';
+      checklist.querySelectorAll('label').forEach((label) => {
+        const copy = label.querySelector('p');
+        if (copy) copy.textContent = copy.textContent.replace('My ', 'You can see ').replace('It is clearly ', 'It gives you ');
+      });
+    }
+  })();
+</script>
+<script>
+  (() => {
+    const descriptions = [
+      'You can see your face clearly, and the photo looks current and flattering at normal phone-screen size.',
+      'It still looks recognisably like you: your face, hair, body, age, and everyday style all feel familiar.',
+      'Nothing in it pulls you out of the moment: the skin, hands, background, light, and finish all look natural.',
+      'It adds a useful new side of you to the profile rather than repeating a photo you already have.',
+      'You would feel comfortable talking about the place, activity, clothes, or detail if someone asked you about it.',
+      'You would feel happy and comfortable meeting someone who had seen it on your profile.'
+    ];
+    Array.from(document.querySelectorAll('input[type="checkbox"]')).forEach((input, index) => {
+      const copy = input.closest('label')?.querySelector('p');
+      if (copy && descriptions[index]) copy.textContent = descriptions[index];
+    });
+  })();
+</script>
 </body>
 </html>

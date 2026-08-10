@@ -101,5 +101,32 @@
     if (endingCopy) endingCopy.textContent = 'You do not need a longer list of mistakes. Fix the first missing proof, then let the rest of your profile get a fair chance to work.';
   })();
 </script>
+<script>
+  (() => {
+    const hero = document.querySelector('.hero');
+    const audit = Array.from(document.querySelectorAll('.page')).find((section) => section.querySelector('.kicker')?.textContent.trim() === 'The four-check profile audit');
+    const ending = document.querySelector('.ending');
+    if (hero) {
+      const kicker = hero.querySelector('.kicker');
+      const title = hero.querySelector('h1');
+      const lead = hero.querySelector('.lead');
+      if (kicker) kicker.textContent = 'A quick check you can do with your profile open';
+      if (title) title.textContent = 'Let’s find the one thing your profile needs next.';
+      if (lead) lead.textContent = 'This is not a test and you are not looking for everything that could be better. We are simply finding the first useful improvement, so you know where to put your energy.';
+    }
+    if (audit) {
+      const intro = audit.querySelector('.intro');
+      if (intro) intro.textContent = 'Start with number 1. If you can honestly say yes, move to the next one. When you reach a “not really,” pause there - that is the photo you will improve first.';
+      audit.querySelectorAll('.question').forEach((question) => {
+        const copy = question.querySelector('p');
+        if (copy) copy.innerHTML = copy.innerHTML.replace('<b>Check:</b>', '<b>Have a look:</b>').replace('<b>If not:</b>', '<b>Try this next:</b>');
+      });
+    }
+    if (ending) {
+      const copy = ending.querySelector('p:not(.kicker)');
+      if (copy) copy.textContent = 'Once you have fixed that one thing, you can come back and check the next one. Small improvements are exactly how a profile starts to feel clearer and more like you.';
+    }
+  })();
+</script>
 </body>
 </html>

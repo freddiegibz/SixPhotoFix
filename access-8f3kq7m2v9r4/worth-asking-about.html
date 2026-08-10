@@ -163,5 +163,29 @@
     `;
   })();
 </script>
+<script>
+  (() => {
+    const hero = document.querySelector('.hero');
+    const method = Array.from(document.querySelectorAll('main > section.page')).find((section) => section.querySelector('.kicker')?.textContent.trim() === 'The matchability method');
+    if (hero) {
+      const kicker = hero.querySelector('.kicker');
+      const title = hero.querySelector('h1');
+      const lead = hero.querySelector('.lead');
+      if (kicker) kicker.textContent = 'A simple way to make the written part of your profile feel more like you';
+      if (title) title.textContent = 'Let’s turn a few ordinary details into easy profile answers.';
+      if (lead) lead.textContent = 'You do not need a clever bio. We will use small parts of your real life to help someone get a feel for you and make the first message feel easier.';
+    }
+    if (method) {
+      const intro = method.querySelector('.intro');
+      if (intro) intro.textContent = 'We will do one example together first. Then you can use the same small pattern for two more things from your life. There is no need to get it perfect on the first try.';
+      const questions = method.querySelectorAll('.question');
+      const prompts = ['First, write down a few normal things you do or enjoy. The examples below are only there to get you thinking - your own version can be much quieter or more ordinary.', 'Next, add one small detail that makes it feel like a real moment. You are not performing a personality here; you are letting someone see a little more of your everyday life.', 'Finally, give the other person a gentle way in. A recommendation, a question, or a small opinion is plenty.'];
+      questions.forEach((question, index) => {
+        const copy = question.querySelector('p');
+        if (copy && prompts[index]) copy.textContent = prompts[index];
+      });
+    }
+  })();
+</script>
 </body>
 </html>

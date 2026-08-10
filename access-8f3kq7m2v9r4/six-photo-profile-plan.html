@@ -237,5 +237,73 @@
     if (note.textContent.includes('Every prompt in this guide starts with a likeness instruction')) note.remove();
   });
 </script>
+<script>
+  (() => {
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      const kicker = hero.querySelector('.kicker');
+      const title = hero.querySelector('h1');
+      const lead = hero.querySelector('.lead');
+      const truth = hero.querySelector('.truth');
+      if (kicker) kicker.textContent = 'Start here - we will make the first photo together';
+      if (title) title.textContent = 'Let’s build a dating profile that feels like you.';
+      if (lead) lead.textContent = 'You do not need six perfect photos or an exciting new life. We are going to choose a few real moments, make one useful photo at a time, and put the strongest versions together at the end.';
+      if (truth) truth.innerHTML = 'For now, you only need to understand one thing: <span>each photo will show a different, useful side of you.</span>';
+    }
+
+    const problem = document.querySelector('.problem');
+    if (problem) {
+      const kicker = problem.querySelector('.kicker');
+      const heading = problem.querySelector('h2');
+      const intro = problem.querySelector('.split p:not(.kicker)');
+      if (kicker) kicker.textContent = 'A quick note before we start';
+      if (heading) heading.textContent = 'A good profile feels like a person, not a photo album.';
+      if (intro) intro.textContent = 'When all the photos show the same angle, place, or expression, it is hard for someone to get a sense of you. We will fix that by giving each photo a small, clear purpose.';
+    }
+
+    const plan = document.querySelector('.plan');
+    if (plan) {
+      const kicker = plan.querySelector('.kicker');
+      const heading = plan.querySelector('h2');
+      const intro = plan.querySelector('.intro');
+      if (kicker) kicker.textContent = 'The six photos, in plain English';
+      if (heading) heading.textContent = 'Here is what each photo helps someone understand about you.';
+      if (intro) intro.textContent = 'You do not need to memorise this. Just use it to choose a different kind of photo for each space.';
+      const labels = ['A clear first photo','A second natural view','A glimpse of your life','How you look day to day','What a date with you might feel like','Something easy to ask about'];
+      plan.querySelectorAll('.role h3').forEach((heading, index) => heading.textContent = labels[index] || heading.textContent);
+    }
+
+    const jobs = document.querySelector('.six-explained');
+    if (jobs) {
+      const intro = jobs.querySelector('.intro');
+      if (intro) intro.textContent = 'Read this once, then keep it nearby while you choose prompts. Each description simply tells you what a useful finished photo looks like.';
+      jobs.querySelectorAll('.brief-detail b').forEach((label) => {
+        if (label.textContent.includes('What most guys')) label.textContent = 'Easy mistake';
+        if (label.textContent.includes('Why it loses')) label.textContent = 'Why it can be unhelpful';
+        if (label.textContent.includes('finished')) label.textContent = 'What to aim for';
+      });
+    }
+
+    const setup = Array.from(document.querySelectorAll('.setup')).find((section) => section.querySelector('.kicker')?.textContent.includes('Part 3'));
+    if (setup) {
+      const steps = setup.querySelectorAll('.steps .step');
+      if (steps[1]) steps[1].querySelector('p').insertAdjacentHTML('afterbegin', '<b>Good enough is simple:</b> use recent photos where your face is clear. They do not need to be professional. ');
+      if (steps[3]) steps[3].querySelector('p').insertAdjacentHTML('afterbegin', '<b>If the first version is not right, that is normal.</b> ');
+    }
+
+    const library = document.querySelector('.prompt-library');
+    if (library) {
+      const intro = library.querySelector('.intro');
+      if (intro) intro.textContent = 'Start with one Photo 1 prompt that sounds like somewhere you would genuinely go. Make one version, see how it feels, and only then move on to Photo 2. You can come back for the rest later.';
+      const guide = document.createElement('div');
+      guide.className = 'how-to-use';
+      guide.style.marginTop = '18px';
+      guide.innerHTML = '<b>When you are ready:</b> pick one Photo 1 option below, copy it into Gemini, and let it make a first version. If it looks clearly like you, you are on track. If not, try the next option or use a real photo from your camera roll.';
+      intro?.insertAdjacentElement('afterend', guide);
+    }
+
+    Array.from(document.querySelectorAll('.setup')).filter((section) => section.querySelector('.kicker')?.textContent.includes('The part most guys skip')).forEach((section) => section.style.display = 'none');
+  })();
+</script>
 </body>
 </html>
