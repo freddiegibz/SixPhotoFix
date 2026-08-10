@@ -359,6 +359,13 @@
     const repeatedRoleGuide = document.querySelector('.six-explained');
     if (repeatedRoleGuide) repeatedRoleGuide.style.display = 'none';
 
+    const photoCritique = document.querySelector('.problem');
+    if (photoCritique) photoCritique.style.display = 'none';
+
+    Array.from(document.querySelectorAll('main > section.page')).forEach((section) => {
+      if (section.querySelector('.kicker')?.textContent.trim() === 'What is inside') section.style.display = 'none';
+    });
+
     const setup = Array.from(document.querySelectorAll('.setup')).find((section) => section.querySelector('.kicker')?.textContent.includes('Part 3'));
     if (setup) {
       const kicker = setup.querySelector('.kicker');
