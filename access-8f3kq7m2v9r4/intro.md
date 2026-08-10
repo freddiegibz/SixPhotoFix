@@ -20,7 +20,7 @@ It gives you:
 - 20 examples of what good dating-app photos look like.
 - Five explanations of the exact photos killing your account.
 - 20 prompts you can use to create stronger photos for yourself.
-- The six-photo sequence that gives each photo a job: get attention, build interest, and give her a reason to message.
+- The proven six-photo sequence that puts the photos you create in the order that gets the strongest response: more attention, more interest, and more reasons to message.
 
 By the end of this product, your dating profile will not be average—and your matches will not be either.
 
