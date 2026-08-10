@@ -1,8 +1,10 @@
 ### Why the Six-Photo Sequence Cures Bad Profiles
 
-The six-photo sequence is what turns a profile from a random set of decent pictures into something that actually works together.
+Bad profiles make you easy to skip. There is nothing that holds attention, builds interest, or gives her a reason to start the conversation.
 
-Each photo has a different job. Your first photo gets attention. The next few build attraction, show different sides of you, and make your life feel more interesting. The final photo gives her an easy reason to start a conversation.
+The six-photo sequence fixes that.
+
+Your first photo gets her to stop. The next photos show enough of your life and personality to build attraction instead of losing it. The final photo gives her an easy reason to message you first.
 
 You do not need all six photos for this to make a difference. If your current profile is weak, even replacing two or three bad photos with stronger ones from this guide can massively improve it.
 
