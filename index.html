@@ -125,6 +125,8 @@
       element.innerHTML = element.innerHTML.replace(/60\+/g, '20+');
     });
     document.querySelector('.contents')?.remove();
+    const setupHeading = document.querySelector('.setup-included h3');
+    if (setupHeading) setupHeading.textContent = 'Everything you need to create the six photos is inside.';
   </script>
 </body>
 </html>
