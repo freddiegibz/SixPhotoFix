@@ -150,5 +150,58 @@
     if (closeCopy) closeCopy.textContent = 'Build the six, choose the strongest version for each job, then let the profile tell a clearer, more attractive story before you ever send a message.';
   })();
 </script>
+<script>
+  (() => {
+    const jobs = document.querySelector('.six-explained');
+    const setup = document.querySelector('.setup');
+    const prompts = document.querySelector('.prompt-library');
+    if (!jobs || !setup || !prompts) return;
+
+    jobs.id = 'photo-jobs';
+    prompts.id = 'prompts';
+    setup.before(jobs);
+
+    const jobsKicker = jobs.querySelector('.kicker');
+    const setupKicker = setup.querySelector('.kicker');
+    const promptsKicker = prompts.querySelector('.kicker');
+    if (jobsKicker) jobsKicker.textContent = 'Part 2 - Pick the six jobs first';
+    if (setupKicker) setupKicker.textContent = 'Part 3 - Set up one tool and make Photo 1';
+    if (promptsKicker) promptsKicker.textContent = 'Part 4 - Pick your prompts';
+
+    const setupTitle = setup.querySelector('h2');
+    const setupIntro = setup.querySelector('.intro');
+    if (setupTitle) setupTitle.textContent = 'Start simple: get your first usable photo before you worry about the other five.';
+    if (setupIntro) setupIntro.textContent = 'You are not committing to six AI photos. Start with Photo 1: the clear, attractive opener. Once you have one version that looks like you, repeat the same simple process for the next job.';
+
+    const routes = setup.querySelector('.routes');
+    if (routes) {
+      const routeCards = routes.querySelectorAll('.route');
+      if (routeCards.length >= 3) {
+        routeCards[0].classList.remove('recommended');
+        routeCards[0].querySelector('.label').textContent = 'Use this if you want the most control';
+        routeCards[1].classList.add('recommended');
+        routeCards[1].querySelector('.label').textContent = 'Start here - simplest free route';
+        routeCards[2].querySelector('.label').textContent = 'Use this if you already have ChatGPT Plus';
+      }
+      const firstRun = document.createElement('div');
+      firstRun.className = 'how-to-use';
+      firstRun.style.marginTop = '28px';
+      firstRun.innerHTML = '<b>If you are new to this, choose Gemini.</b><br><br>Do not compare every tool or try to learn the whole guide first. Open Gemini, upload your reference photos, choose one Photo 1 prompt in Part 4, and make one version. That is your only job for the next 10 minutes.';
+      routes.insertAdjacentElement('afterend', firstRun);
+    }
+
+    const freeKicker = Array.from(setup.querySelectorAll('.kicker')).find((item) => item.textContent.includes('Free setup'));
+    if (freeKicker) {
+      const checklist = document.createElement('div');
+      checklist.className = 'how-to-use';
+      checklist.style.margin = '0 0 26px';
+      checklist.innerHTML = '<b>Your first-photo checklist</b><br><br>1. Pick 5-10 recent photos where your face is visible.<br>2. Open a new Gemini chat and upload them together.<br>3. Scroll to Part 4 and choose one Photo 1 prompt you could genuinely explain in real life.<br>4. Paste it exactly as written. Generate one version.<br>5. Keep it only if it clearly looks like you today. If it is close, use the rescue line later in this guide instead of starting from zero.';
+      freeKicker.insertAdjacentElement('afterend', checklist);
+    }
+
+    const promptIntro = prompts.querySelector('.intro');
+    if (promptIntro) promptIntro.textContent = 'Choose one route that actually fits your life. Start with a Photo 1 prompt. You do not need to generate every option; make one, check it against the guide, then move to Photo 2.';
+  })();
+</script>
 </body>
 </html>
