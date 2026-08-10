@@ -445,5 +445,20 @@
     <section class="final"><p class="kicker">Your profile is ready</p><h2>Upload them in this exact order.</h2><ol>${jobs.map((j,i)=>`<li><b>Photo ${i+1}:</b> ${j[0]}</li>`).join('')}</ol><p class="plain" style="margin-top:25px">That is your finished six-photo sequence. Put it live now. Then use Worth Asking About to add three answers that make the first message easier.</p></section>`;
 })();
 </script>
+<script>
+(() => {
+  const root=document.querySelector('#six-photo-rebuild'); if(!root) return;
+  const sections=[...root.querySelectorAll('section')];
+  const setup=sections[2];
+  if(setup){
+    setup.insertAdjacentHTML('beforeend', `<div class="good"><b>Paste this once, before Photo 1:</b><br><br>I am creating dating-profile photos using these reference photos. Keep my face shape, current haircut, facial hair, skin tone, body type, and age consistent across every image. The photos need to look like natural phone-camera photos, not polished AI portraits.</div><div class="steps"><div class="step"><span class="num">3</span><div><b>Clear face photos</b><br>Use three photos where your face is close, uncovered, and easy to recognise.</div></div><div class="step"><span class="num">2</span><div><b>Different angles</b><br>Use two from a slight angle. This helps Gemini understand your face beyond one selfie angle.</div></div><div class="step"><span class="num">2</span><div><b>Relaxed expressions</b><br>Use two where you look normal: smiling, talking, or relaxed.</div></div><div class="step"><span class="num">2</span><div><b>More of your body</b><br>Use two that show your build and proportions.</div></div><div class="step"><span class="num">1</span><div><b>Your current look</b><br>Use one very recent photo with your current hair and facial hair.</div></div></div>`);
+  }
+  [...root.querySelectorAll('.photo')].forEach((photo,i)=>{
+    photo.querySelector('.save').insertAdjacentHTML('beforebegin', `<div class="good"><b>Check this before you save it:</b><br>1. The face clearly looks like you.<br>2. The hair and facial hair look current.<br>3. This photo adds the thing Photo ${i+1} is meant to add.</div>`);
+  });
+  const final=root.querySelector('.final');
+  if(final) final.insertAdjacentHTML('beforebegin', `<section><p class="kicker">Add the written part</p><h2>Your photos got her to stop. Add three answers that make matching easy.</h2><div class="steps"><div class="step"><span class="num">01</span><div><b>A date she can picture</b><br>“A good Sunday is a long walk followed by finding somewhere that takes roast potatoes seriously.”</div></div><div class="step"><span class="num">02</span><div><b>A light opinion</b><br>“I will stand by this: a pub quiz needs a music round. Happy to hear the case for anything else.”</div></div><div class="step"><span class="num">03</span><div><b>An easy first message</b><br>“I’m looking for someone who is up for trying the new local place before it gets ruined by TikTok.”</div></div></div><div class="good"><b>Hinge or Bumble:</b> use all three. <b>Tinder:</b> use one as your bio.</div></section><section><p class="kicker">If you get stuck</p><h2>Use the problem you can see.</h2><div class="steps"><div class="step"><span class="num">A</span><div><b>Wrong face or hair:</b> add two clearer current reference photos, then use the correction message.</div></div><div class="step"><span class="num">B</span><div><b>Plastic skin, strange hands, fake background:</b> regenerate that photo. Do not try to rescue a visibly wrong image.</div></div><div class="step"><span class="num">C</span><div><b>Too many almost-good versions:</b> choose the one that looks most like you and does the slot’s job. Move on.</div></div></div></section>`);
+})();
+</script>
 </body>
 </html>
