@@ -305,5 +305,72 @@
     Array.from(document.querySelectorAll('.setup')).filter((section) => section.querySelector('.kicker')?.textContent.includes('The part most guys skip')).forEach((section) => section.style.display = 'none');
   })();
 </script>
+<script>
+  (() => {
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      hero.querySelector('.kicker').textContent = 'Start here — build the part of your profile people see first';
+      hero.querySelector('h1').textContent = 'Let’s build a dating profile that gives you more chances of a match.';
+      hero.querySelector('.lead').textContent = 'You do not need six perfect photos. You need a clear first impression, a few reasons to keep looking, and one easy thing to message you about. We will build that one photo at a time.';
+      hero.querySelector('.truth').innerHTML = 'A stronger profile is not six impressive-looking pictures. It is <span>six photos that each make the profile easier to say yes to.</span>';
+    }
+
+    const problem = document.querySelector('.problem');
+    if (problem) {
+      problem.querySelector('.kicker').textContent = 'Before you choose any photos';
+      problem.querySelector('h2').textContent = 'Keep the photos that add something. Replace the ones that do not.';
+      problem.querySelector('.split p:not(.kicker)').textContent = 'A photo is not bad because it is a selfie, a night out, or from a holiday. It is only unhelpful when it leaves someone with the same question they had before: what do you actually look like, and what would it be like to spend time with you?';
+      const repeat = problem.querySelector('.repeat');
+      repeat.innerHTML = `
+        <article><span class="x">01</span><h3>Several close-up photos</h3><p><b>Keep one</b> as your clear first photo. Use a second only if it shows you in a noticeably different place or moment. For the other spaces, choose photos that show your life, style, or a plan you enjoy.</p></article>
+        <article><span class="x">02</span><h3>A dark or blurry night-out photo</h3><p><b>Use it only if you are easy to spot</b> and it shows a side of your life the other photos miss. If not, choose a clear photo of a normal plan you genuinely enjoy instead — coffee, a walk, cooking, sport, a local place, or an event.</p></article>
+        <article><span class="x">03</span><h3>A travel photo where you are tiny</h3><p><b>Keep the trip, change the shot.</b> Travel can be a great life photo when you are visible and the photo gives people something to ask about. If the scenery is doing all the work, it is not earning one of your six spaces.</p></article>`;
+      problem.querySelector('.note').innerHTML = 'For now, just ask: <span>does this photo show something new that could make someone more interested in matching?</span> If not, save it for Instagram and use a stronger option here.';
+    }
+
+    const plan = document.querySelector('.plan');
+    if (plan) {
+      plan.querySelector('.kicker').textContent = 'Your six-photo line-up';
+      plan.querySelector('h2').textContent = 'Give every space one clear job.';
+      plan.querySelector('.intro').textContent = 'This is the order to use. You can choose photos from your camera roll, make them with Gemini, or mix both. The only rule is that each one adds something the previous photos did not.';
+      const roleCopy = [
+        ['1. Your clearest first photo', 'Use a recent chest-up photo in good light where your face is easy to see. No sunglasses, group, or distance. This is the photo that gets someone into the rest of your profile.'],
+        ['2. A second photo that backs it up', 'Choose a different day, outfit, or setting where you still look clearly like yourself. This makes the first photo feel current and believable, rather than like one lucky shot.'],
+        ['3. Something you actually do', 'Show yourself doing an interest, routine, or outing you would happily talk about. You should still be easy to spot — the activity is there to add substance, not hide you.'],
+        ['4. How you look in real life', 'Use a natural full-body or three-quarter photo in clothes you would genuinely wear out. It gives a much fuller picture than another cropped selfie.'],
+        ['5. A moment that feels easy to join', 'Pick a relaxed setting that makes meeting you feel simple: a drink, walk, market, meal, gig, game, or weekend plan. Aim for warm and normal, not staged.'],
+        ['6. One thing she could ask about', 'Finish with a clear detail that has a small story behind it: something you make, collect, train for, care about, or have an opinion on. It gives a match an easy first message.']
+      ];
+      plan.querySelectorAll('.role').forEach((role, i) => {
+        role.querySelector('h3').textContent = roleCopy[i][0];
+        role.querySelector('p').textContent = roleCopy[i][1];
+      });
+    }
+
+    const jobs = document.querySelector('.six-explained');
+    if (jobs) {
+      jobs.querySelector('.kicker').textContent = 'Choose or make each photo';
+      jobs.querySelector('h2').textContent = 'Use this as your decision guide, not homework.';
+      jobs.querySelector('.intro').textContent = 'Take one slot at a time. First look through your camera roll. If you cannot find a photo that does the job, use the matching Gemini prompt later in this guide. You do not need to make everything from scratch.';
+      const details = [
+        ['Your clearest first photo', 'Choose a recent, close photo where your face is clear in ordinary daylight and you look relaxed.', 'Good enough: a stranger could recognise you straight away and see what you look like now.', 'If you do not have one, start with a Photo 1 Gemini prompt.'],
+        ['A second natural view', 'Choose a different place, angle, or outfit where you are still easy to see.', 'Good enough: it confirms the first photo rather than repeating it.', 'If it is basically the same selfie again, use the prompt for Photo 2 instead.'],
+        ['Something you actually do', 'Choose a hobby, routine, or outing that is genuinely part of your life. Keep yourself visible in the frame.', 'Good enough: someone can see both you and one real thing you enjoy.', 'If the activity makes you tiny in the photo, use a closer option or generate one.'],
+        ['How you look day to day', 'Choose a full-body or three-quarter photo in an outfit you would wear on a normal date.', 'Good enough: it gives an honest, flattering view of your build and style.', 'If you only have mirror selfies, use the Photo 4 prompt for a more natural version.'],
+        ['A moment that feels easy to join', 'Choose a relaxed plan that you would actually suggest to someone: a drink, meal, walk, event, or weekend outing.', 'Good enough: it looks like a real moment, not proof that you have a social life.', 'If your only option is dark or crowded, make a clearer Photo 5.'],
+        ['One easy conversation starter', 'Choose a visible detail you can say something about if asked.', 'Good enough: you can imagine a match opening with a simple question about it.', 'If nothing comes to mind, use Worth Asking About after you finish the photos.']
+      ];
+      jobs.querySelectorAll('.photo-brief').forEach((brief, i) => {
+        const [title, use, enough, stuck] = details[i];
+        brief.querySelector('.brief-top h3').textContent = `${i + 1}. ${title}`;
+        brief.querySelector('.brief-top p').textContent = 'This slot has one simple purpose. Choose the strongest real photo you have for it, or make one if you need to.';
+        const cells = brief.querySelectorAll('.brief-detail > div');
+        cells[0].querySelector('b').textContent = 'Look for'; cells[0].querySelector('p').textContent = use;
+        cells[1].querySelector('b').textContent = 'Good enough looks like'; cells[1].querySelector('p').textContent = enough;
+        cells[2].querySelector('b').textContent = 'If you get stuck'; cells[2].querySelector('p').textContent = stuck;
+      });
+    }
+  })();
+</script>
 </body>
 </html>
