@@ -81,4 +81,13 @@ if(Array.isArray(window.originalPromptOptions)){
 </script><script>
 const writtenSection=sectionFor('Give her something to say after she stops.');
 if(writtenSection)writtenSection.innerHTML=`<p class="kicker">Finish the written part</p><h2>Give her something to say after she stops.</h2><div class="steps"><div class="step"><span class="n">01</span><div><b>Iâ€™ve got a running list of places to try in this city. The next one needs a second opinion.</b></div></div><div class="step"><span class="n">02</span><div><b>I make a very convincing case for going out for one drink and accidentally staying for dinner.</b></div></div><div class="step"><span class="n">03</span><div><b>My ideal Sunday involves doing one useful thing, eating something good, and pretending that counts as balance.</b></div></div><div class="step"><span class="n">04</span><div><b>Iâ€™m always looking for a new walk, pub, coffee place, or meal worth becoming slightly annoying about.</b></div></div><div class="step"><span class="n">05</span><div><b>I take recommendations seriously. Especially if they involve food, films, or somewhere I can bring a dog.</b></div></div></div><p class="kicker" style="margin-top:48px">Make it your own</p><div class="steps"><div class="step"><span class="n">A</span><div><b>Iâ€™m currently trying to find the best [food / coffee / pub / walk] in [your area]. [Your current favourite] is winning, but Iâ€™m open to being proved wrong.</b></div></div><div class="step"><span class="n">B</span><div><b>A good [Sunday / Friday night / first date] is [a real plan you enjoy], followed by [food, drink, or small ritual].</b></div></div><div class="step"><span class="n">C</span><div><b>I will stand by this: [a light opinion about food, music, sport, films, or your city]. Happy to hear the case for [the opposing view].</b></div></div></div>`;
+sectionFor('Use these once your first six are working.')?.remove();
+</script><script>
+const characterRepairs=[
+  ['\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2','\u2019'],['\u00c2\u00b7','\u00b7'],['\u00c3\u00a9','\u00e9'],
+  ['\u00e2\u20ac\u2122','\u2019'],['\u00e2\u20ac\u0153','\u201c'],['\u00e2\u20ac\u009d','\u201d'],['\u00e2\u2020\u2192','\u2192']
+];
+const textNodes=document.createTreeWalker(book,NodeFilter.SHOW_TEXT);const visibleText=[];
+while(textNodes.nextNode())visibleText.push(textNodes.currentNode);
+visibleText.forEach((node)=>{let value=node.nodeValue;characterRepairs.forEach(([broken,correct])=>value=value.split(broken).join(correct));node.nodeValue=value});
 </script></body></html>
