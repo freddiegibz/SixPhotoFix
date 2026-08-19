@@ -71,7 +71,7 @@
 </head>
 <body>
   <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1440902484729766&amp;ev=PageView&amp;noscript=1"></noscript>
-  <div class="top">THE SIX PHOTOS THAT TURN MID PROFILES INTO <span class="grad">MATCH MAGNETS</span></div>
+  <div class="top">Launch price: <span class="grad">$19</span> &middot; Price increases in <span id="launch-countdown">02:00:00</span></div>
   <main>
     <section class="hero"><div class="wrap">
       <span class="eyebrow">For guys tired of getting passed over</span>
@@ -132,5 +132,6 @@
   </script>
 <script>const bumpToggle=document.getElementById('done-for-you');const bumpCard=document.querySelector('.order-bump');const checkoutPrice=document.getElementById('checkout-price');const checkoutButton=document.getElementById('checkout-button');const standardCheckout='https://buy.stripe.com/cNi4gy9aXakA8mAcCebZe0Z';const doneForYouCheckout='https://buy.stripe.com/fZu5kCgDpakA5ao8lYbZe10';if(bumpToggle&&bumpCard&&checkoutPrice&&checkoutButton){bumpToggle.addEventListener('change',function(){const total=this.checked?34:19;checkoutPrice.textContent='$'+total;checkoutButton.innerHTML='Get Instant Access &mdash; $'+total;checkoutButton.href=this.checked?doneForYouCheckout:standardCheckout;bumpCard.classList.toggle('is-selected',this.checked)})}</script>
 <script>document.querySelector('.comp.bad .comp-head')?.replaceChildren('THE RANDOM AI SLOP PROFILE');</script>
+<script>(()=>{const el=document.getElementById('launch-countdown');const end=Date.now()+7200000;const update=()=>{const remaining=Math.max(0,end-Date.now());const h=Math.floor(remaining/3600000);const m=Math.floor(remaining%3600000/60000);const s=Math.floor(remaining%60000/1000);el.textContent=[h,m,s].map(v=>String(v).padStart(2,'0')).join(':')};update();setInterval(update,1000)})();</script>
 </body>
 </html>
