@@ -9,14 +9,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{--black:#090b14;--card:#191d2c;--pink:#6379f5;--orange:#9b63ef;--green:#4ade80;--muted:#aeb3c2;--line:rgba(255,255,255,.09)}
-    *{box-sizing:border-box}body{min-height:100vh;margin:0;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 50% 22%,rgba(99,121,245,.2),transparent 32%),#090b14;color:#fff;font:16px/1.55 Inter,Arial,sans-serif}
-    .card{width:100%;max-width:590px;padding:48px 34px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#1d2030,#121521);box-shadow:0 28px 70px rgba(0,0,0,.38);text-align:center}
-    .check{display:grid;place-items:center;width:62px;height:62px;margin:0 auto 22px;border:2px solid var(--green);border-radius:50%;color:var(--green);font-size:32px;font-weight:800}
+    *{box-sizing:border-box}body{min-height:100vh;margin:0;padding:42px 24px;background:radial-gradient(circle at 50% 22%,rgba(99,121,245,.2),transparent 32%),#090b14;color:#fff;font:16px/1.55 Inter,Arial,sans-serif}.page{width:100%;max-width:590px;margin:0 auto;display:grid;gap:18px}
+    .card{width:100%;padding:38px 34px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#1d2030,#121521);box-shadow:0 28px 70px rgba(0,0,0,.38);text-align:center}
+    .check{display:grid;place-items:center;width:54px;height:54px;margin:0 auto 18px;border:2px solid var(--green);border-radius:50%;color:var(--green);font-size:28px;font-weight:800}
     .eyebrow{margin:0 0 12px;color:var(--green);font:800 12px/1 Outfit,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
     h1{margin:0 0 16px;font:800 clamp(40px,8vw,58px)/.98 Outfit,Arial,sans-serif;letter-spacing:-.05em}
     p{max-width:430px;margin:0 auto;color:var(--muted)}
-    .cta{display:block;width:100%;margin:32px 0 15px;padding:19px 20px;border-radius:16px;background:linear-gradient(135deg,var(--pink),var(--orange));box-shadow:7px 8px 0 rgba(99,121,245,.16),0 12px 30px -10px rgba(99,121,245,.58);color:#fff;font:800 17px/1 Outfit,Arial,sans-serif;letter-spacing:.02em;text-decoration:none;text-transform:uppercase}
-    .note{font-size:13px}.back{display:inline-block;margin-top:28px;color:#c8d0ff;font-size:13px;text-decoration:none}
+    .cta{display:block;width:100%;margin:28px 0 0;padding:19px 20px;border-radius:16px;background:linear-gradient(135deg,var(--pink),var(--orange));box-shadow:7px 8px 0 rgba(99,121,245,.16),0 12px 30px -10px rgba(99,121,245,.58);color:#fff;font:800 17px/1 Outfit,Arial,sans-serif;letter-spacing:.02em;text-decoration:none;text-transform:uppercase}
+    .done-for-you{padding:34px;border-color:rgba(155,99,239,.45);background:linear-gradient(145deg,#211d35,#121521);text-align:left}.done-for-you h2{margin:0 0 12px;color:#fff;font:800 27px/1.08 Outfit,Arial,sans-serif;letter-spacing:-.035em}.done-for-you p{max-width:none;margin:0 0 14px;color:#c7ccda;text-align:left}.done-for-you strong{color:#fff}.card-label{margin:0 0 10px!important;color:#cbb2fa!important;font:800 11px/1 Outfit,Arial,sans-serif;letter-spacing:.11em;text-transform:uppercase}.done-for-you a,.stuck-cta{display:block;margin-top:20px;padding:15px 16px;border:1px solid rgba(255,255,255,.22);border-radius:12px;color:#fff!important;font:700 14px/1.15 Outfit,Arial,sans-serif;text-align:center!important;text-decoration:none}.done-for-you a:hover{border-color:rgba(255,255,255,.5)}.stuck{margin-top:30px;padding-top:28px;border-top:1px solid var(--line)}.stuck h2{font-size:23px}.stuck-cta{margin:18px 0 0!important;border-color:rgba(99,121,245,.5)!important}
+    @media(max-width:520px){body{padding:20px 16px}.card{padding:32px 22px}.done-for-you{padding:28px 22px}}
   </style>
   <!-- Meta Pixel Code -->
   <script>
@@ -32,14 +33,29 @@
 </head>
 <body>
   <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1440902484729766&amp;ev=PageView&amp;noscript=1"></noscript>
+  <div class="page">
   <main class="card">
     <div class="check">✓</div>
-    <p class="eyebrow">Payment successful</p>
-    <h1>You&rsquo;re in.</h1>
-    <p>Your copy of The Six-Photo Fix is ready. Open the guides, build your new line-up, and get your profile working properly.</p>
+    <p class="eyebrow">Payment confirmed</p>
+    <h1>You&rsquo;re In.</h1>
+    <p>Your order is confirmed.</p>
     <a class="cta" href="/access-8f3kq7m2v9r4/">Access The Six-Photo Fix</a>
-    <p class="note">This access link has also been sent to your email.</p>
-    <a class="back" href="index.html">Back to the site</a>
   </main>
+  <section class="card done-for-you">
+    <p class="card-label">Optional support</p>
+    <h2>Want Us To Build It For You?</h2>
+    <p>You already know what the profile needs.</p>
+    <p>If you don&rsquo;t want to spend the time creating, choosing, and testing everything yourself, we can do it for you.</p>
+    <p>We create the photos, build the six-photo profile, and hand you back the finished version.</p>
+    <p><strong>Same result you&rsquo;re trying to get &mdash; without doing the work yourself.</strong></p>
+    <a href="/done-for-you-profile/index.html">Build My Profile For Me</a>
+    <div class="stuck">
+      <h2>Stuck Somewhere Else?</h2>
+      <p>If the profile is only part of the problem, tell us where things are breaking down.</p>
+      <p>We&rsquo;ll identify the next bottleneck and help you fix it &mdash; so you can get to more dates with women you actually want to see.</p>
+      <p class="stuck-cta">Help Me Figure Out What&rsquo;s Wrong</p>
+    </div>
+  </section>
+  </div>
 </body>
 </html>
