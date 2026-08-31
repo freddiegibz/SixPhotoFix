@@ -1,5 +1,8 @@
 const Stripe = require('stripe');
 const { Resend } = require('resend');
+const crypto = require('crypto');
+
+const META_PIXEL_ID = '1440902484729766';
 
 const PRODUCTS = {
   price_1U28fdB4uyQdSSUIZPo8Z9Fh: {
@@ -63,6 +66,61 @@ function createEmailText(products) {
   return `You're in.\n\nThanks for your purchase. Your access is ready below.\n\n${accessItems}\n\nIf you have any trouble accessing your purchase, reply to this email.\n\n— SixPhotoFix`;
 }
 
+function hashEmail(email) {
+  return crypto
+    .createHash('sha256')
+    .update(email.trim().toLowerCase())
+    .digest('hex');
+}
+
+async function sendMetaPurchaseEvent({ session, email, lineItems }) {
+  if (!process.env.META_CAPI_ACCESS_TOKEN) {
+    throw new Error('META_CAPI_ACCESS_TOKEN is not configured.');
+  }
+
+  const event = {
+    event_name: 'Purchase',
+    event_time: Math.floor((session.created || Date.now() / 1000)),
+    event_id: `stripe-checkout/${session.id}`,
+    action_source: 'website',
+    event_source_url: session.success_url || 'https://sixphotofix.online/',
+    user_data: {
+      em: [hashEmail(email)],
+    },
+    custom_data: {
+      currency: session.currency.toUpperCase(),
+      value: session.amount_total / 100,
+      content_ids: lineItems.map((item) => item.price?.id).filter(Boolean),
+      content_type: 'product',
+    },
+  };
+  const payload = { data: [event] };
+
+  if (process.env.META_CAPI_TEST_EVENT_CODE) {
+    payload.test_event_code = process.env.META_CAPI_TEST_EVENT_CODE;
+  }
+
+  const response = await fetch(
+    `https://graph.facebook.com/v24.0/${META_PIXEL_ID}/events?access_token=${encodeURIComponent(
+      process.env.META_CAPI_ACCESS_TOKEN,
+    )}`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    },
+  );
+  const responseBody = await response.json();
+
+  if (!response.ok) {
+    throw new Error(
+      responseBody?.error?.message || 'Meta rejected the Purchase event.',
+    );
+  }
+
+  return event.event_id;
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed.' });
@@ -115,14 +173,6 @@ module.exports = async function handler(req, res) {
     return res.status(200).json({ received: true, ignored: 'Payment is not paid.' });
   }
 
-  if (session.metadata?.fulfillment_email_id) {
-    return res.status(200).json({
-      received: true,
-      alreadyFulfilled: true,
-      emailId: session.metadata.fulfillment_email_id,
-    });
-  }
-
   const email = session.customer_details?.email || session.customer_email;
 
   if (!email) {
@@ -155,35 +205,50 @@ module.exports = async function handler(req, res) {
       );
     }
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    const { data, error } = await resend.emails.send(
-      {
-        from: process.env.RESEND_FROM_EMAIL,
-        to: email,
-        replyTo: 'adsbyalfred@protonmail.com',
-        subject: 'Your SixPhotoFix access is ready',
-        html: createEmailHtml(products),
-        text: createEmailText(products),
-      },
-      { idempotencyKey: `stripe-checkout/${session.id}` },
-    );
+    let emailId = session.metadata?.fulfillment_email_id;
 
-    if (error) {
-      throw new Error(error.message || 'Resend rejected the email request.');
+    if (!emailId) {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      const { data, error } = await resend.emails.send(
+        {
+          from: process.env.RESEND_FROM_EMAIL,
+          to: email,
+          replyTo: 'adsbyalfred@protonmail.com',
+          subject: 'Your SixPhotoFix access is ready',
+          html: createEmailHtml(products),
+          text: createEmailText(products),
+        },
+        { idempotencyKey: `stripe-checkout/${session.id}` },
+      );
+
+      if (error) {
+        throw new Error(error.message || 'Resend rejected the email request.');
+      }
+
+      emailId = data.id;
+      await stripe.checkout.sessions.update(session.id, {
+        metadata: {
+          fulfillment_email_id: emailId,
+          fulfillment_email_sent_at: new Date().toISOString(),
+          fulfillment_products: products.map((product) => product.key).join(','),
+        },
+      });
     }
 
-    await stripe.checkout.sessions.update(session.id, {
-      metadata: {
-        fulfillment_email_id: data.id,
-        fulfillment_email_sent_at: new Date().toISOString(),
-        fulfillment_products: products.map((product) => product.key).join(','),
-      },
-    });
+    let metaEventId = session.metadata?.meta_purchase_event_id;
+
+    if (!metaEventId) {
+      metaEventId = await sendMetaPurchaseEvent({ session, email, lineItems: lineItems.data });
+      await stripe.checkout.sessions.update(session.id, {
+        metadata: { meta_purchase_event_id: metaEventId },
+      });
+    }
 
     return res.status(200).json({
       received: true,
       delivered: true,
-      emailId: data.id,
+      emailId,
+      metaEventId,
       products: products.map((product) => product.key),
     });
   } catch (error) {
