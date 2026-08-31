@@ -8,22 +8,23 @@ const PRODUCTS = {
   price_1U28fdB4uyQdSSUIZPo8Z9Fh: {
     key: 'six-photo-fix',
     name: 'The Six-Photo Fix',
-    accessUrl: process.env.SIX_PHOTO_FIX_ACCESS_URL,
+    accessUrl: 'https://six-photo-fix.vercel.app/access-8f3kq7m2v9r4/',
   },
   price_1U30lpB4uyQdSSUI1iI0ew5L: {
     key: 'openers',
     name: 'The First Message Formula',
-    accessUrl: process.env.OPENERS_ACCESS_URL,
+    accessUrl: 'https://match-to-date.vercel.app/',
   },
   price_1U4717B4uyQdSSUIlBZQ9lM4: {
     key: 'bios-prompts',
     name: '7 Complete Dating Setups',
-    accessUrl: process.env.BIOS_PROMPTS_ACCESS_URL,
+    accessUrl:
+      'https://drive.google.com/file/d/1NurhiOliIJkduRg1k0HDFwqHiHgX8Z1m/view?usp=drive_link',
   },
   price_1U45p8B4uyQdSSUIerMKeBk4: {
     key: 'match-to-date-system',
     name: 'The Match to Date System',
-    accessUrl: process.env.MATCH_TO_DATE_ACCESS_URL,
+    accessUrl: 'https://match-to-date.vercel.app/',
   },
 };
 
@@ -193,16 +194,6 @@ module.exports = async function handler(req, res) {
         received: true,
         ignored: 'No configured deliverables were purchased.',
       });
-    }
-
-    const productsWithoutAccess = products.filter((product) => !product.accessUrl);
-
-    if (productsWithoutAccess.length) {
-      throw new Error(
-        `Missing an access-link environment value for: ${productsWithoutAccess
-          .map((product) => product.name)
-          .join(', ')}.`,
-      );
     }
 
     let emailId = session.metadata?.fulfillment_email_id;
