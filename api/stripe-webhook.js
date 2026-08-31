@@ -152,7 +152,7 @@ module.exports = async function handler(req, res) {
     event = stripe.webhooks.constructEvent(
       rawBody,
       signature,
-      process.env.STRIPE_WEBHOOK_SECRET,
+      process.env.STRIPE_WEBHOOK_SECRET.trim(),
     );
   } catch (error) {
     return res.status(400).json({
