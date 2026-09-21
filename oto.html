@@ -15,11 +15,11 @@
     .hero{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;padding:68px 0 76px}
     .hero-copy .rating{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:28px 0 0;font-size:14px;color:var(--text)}
     .stars{color:var(--purple);letter-spacing:3px;font-size:18px;line-height:1}
-    .hero-copy .exclusive{display:inline-block;margin:0 0 18px;padding:7px 12px;background:#eee6f8;color:#593183;font-size:11px;font-weight:700;letter-spacing:.09em;line-height:1.5;text-transform:uppercase}
+    .client-price-card{margin:0 0 24px;padding:15px 18px;border:1px solid #d8c7e8;border-radius:9px;background:#f8f3fc;box-shadow:0 7px 20px rgba(73,39,107,.07);color:var(--text);font-size:14px;line-height:1.45}.client-price-badge{display:inline-block;margin-bottom:9px;padding:5px 9px;border-radius:4px;background:var(--purple);color:#fff;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.client-price-card>strong{display:block;margin-bottom:7px;color:#593183;font-size:13px}.client-price-options{display:flex;align-items:baseline;gap:6px 10px;flex-wrap:wrap}.client-price-options del{color:#8e8595}.client-price-options b{color:var(--text);font-size:16px}.client-price-separator{color:#a28faf}
     .hero-cta{display:inline-block;margin:8px 0 0;padding:14px 22px;border-radius:6px;background:var(--purple);color:#fff;font-size:14px;font-weight:700;letter-spacing:.045em;text-decoration:none;text-transform:uppercase;transition:transform .15s ease,background .15s ease}.hero-cta:hover{background:#623695;transform:translateY(-1px)}
     h1{margin:0 0 25px;font-size:clamp(38px,4.2vw,57px);font-weight:700;line-height:1.06;letter-spacing:-.055em}
     .highlight{background:linear-gradient(transparent 64%,#e1d0f4 64%,#e1d0f4 95%,transparent 95%)}
-    p{margin:0 0 22px;color:var(--muted)}.hero-copy>p{font-size:17px;line-height:1.7}.hero-copy .direction{margin:26px 0 0;font-size:17px;color:var(--text)}
+    p{margin:0 0 22px;color:var(--muted)}.hero-copy>p{font-size:17px;line-height:1.7}
     .hero-image{margin:0}.hero-image img{display:block;width:100%;height:auto}
     .profile-comparison{width:100%;min-width:0;max-width:540px;justify-self:center}
     .comparison-eyebrow{margin:0 0 12px;color:var(--purple);font-size:11px;font-weight:700;letter-spacing:.08em;text-align:center;text-transform:uppercase}
@@ -85,7 +85,7 @@
     .option-price .saving{color:var(--purple);font-weight:700}
     .option-promise{min-height:0;margin:0;color:#625b69;font-size:14px;line-height:1.6}
     .option-promise strong{display:block;margin-bottom:3px;color:var(--text);font-size:15px;font-weight:700}
-    .card-proof{margin:0 22px 4px;padding:11px 12px;border-radius:6px;background:#efe7f8;color:#59367a;font-size:10px;font-weight:700;line-height:1.5;text-align:center}
+    .card-proof{margin:0 22px 4px;padding:11px 12px;border-radius:6px;background:#efe7f8;color:#59367a;font-size:10px;font-weight:700;line-height:1.5;text-align:center}.option-footer .card-proof{margin:0 0 14px}
     .option-list{margin:0;padding:44px 28px 22px;border:0;position:relative;font-size:13px}
     .option-list:before{content:'WHAT YOU GET';position:absolute;top:21px;left:28px;color:#918897;font-size:9px;font-weight:700;letter-spacing:.1em}
     .option-list li{padding:0 0 11px 22px;color:#514a57}
@@ -111,14 +111,21 @@
 <main class="page">
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-copy">
-      <p class="exclusive">Exclusive offer for SixPhotoFix clients</p>
+      <div class="client-price-card">
+        <span class="client-price-badge">Save up to 72%</span>
+        <strong>You’ve also unlocked exclusive SixPhotoFix client pricing:</strong>
+        <div class="client-price-options">
+          <span><del>$97</del> <b>$27 Profile Review</b></span>
+          <span class="client-price-separator" aria-hidden="true">·</span>
+          <span><del>$147</del> <b>$52 Full Rebuild</b></span>
+        </div>
+      </div>
       <h1 id="hero-title">You Don’t Have To Do This <span class="highlight">By Yourself</span></h1>
       <p>You didn’t buy SixPhotoFix because you wanted another DIY project.</p>
       <p>You bought it because you want <strong>more matches and more dates.</strong></p>
       <p>Luckily, we’ve already transformed <strong>197 profiles</strong> and know what separates a profile that gets ignored from one that actually gets attention.</p>
       <p>So instead of spending hours comparing photos, rewriting prompts and second-guessing every decision, <strong>let us make the calls and help you build a profile that works.</strong></p>
       <p>We’ll review what you’re currently using, keep what works, fix what doesn’t, and show you exactly what needs to change.</p>
-      <p class="direction">Normally: $97 for a review. $147 for a full rebuild.<br><strong>Your exclusive SixPhotoFix customer discount: $27 for the review. $52 for the rebuild.</strong><br>Complete in under 24 hours.</p>
       <a class="hero-cta" href="#options">See options</a>
       <p class="rating"><span class="stars" aria-label="Five stars">★★★★★</span> <strong>197 Profiles Transformed</strong></p>
     </div>
@@ -185,18 +192,18 @@
           <p class="option-label">Expert guidance</p>
           <h3>Tell Me What To Do</h3>
           <div class="option-price"><del>$97</del> $27 <span>one-time · <span class="saving">save $70</span></span></div>
-          <p class="option-promise"><strong>Get the full expert plan for your entire profile.</strong> We decide what to keep, what to replace and exactly what to change.</p>
+          <p class="option-promise"><strong>Send us a few screenshots of your current profile and the photos you’re considering.</strong> We’ll look through everything and show you exactly how we’d improve it.</p>
         </div>
-        <p class="card-proof">✓ 197 profiles transformed &nbsp;·&nbsp; Human reviewed &nbsp;·&nbsp; Under 24 hours</p>
         <ul class="option-list">
-          <li>Complete review of your current profile</li>
-          <li>Exactly which photos we’d use and in what order</li>
-          <li>Specific photo briefs for anything your profile is missing</li>
-          <li>Exact changes we’d make to your bio and prompts</li>
-          <li>Full review delivered in under 24 hours</li>
+          <li>Which photos to keep</li>
+          <li>Which photos to replace</li>
+          <li>The best order for your six photos</li>
+          <li>What kind of photo you’re missing</li>
+          <li>What we’d change in your bio and prompts</li>
         </ul>
         <div class="option-footer">
-          <p class="option-close">You make the changes. We remove the guesswork.</p>
+          <p class="option-close">You make the changes. We tell you exactly what to do.</p>
+          <p class="card-proof">✓ Human reviewed &nbsp;·&nbsp; 197 profiles transformed &nbsp;·&nbsp; Back to you within 24 hours</p>
           <p class="card-guarantee">✓ Covered by our 30 day guarantee</p>
           <a class="option-cta" href="https://buy.stripe.com/aFa3cugDp0K0cCQfOqbZe1b">Get My Full Review</a>
         </div>
@@ -206,17 +213,18 @@
           <p class="option-label">Done for you</p>
           <h3>Just Build It For Me</h3>
           <div class="option-price"><del>$147</del> $52 <span>one-time · <span class="saving">save $95</span></span></div>
-          <p class="option-promise"><strong>Send us what you have. We’ll build the entire profile for you in under 24 hours.</strong></p>
+          <p class="option-promise"><strong>Send us your current profile and a few reference photos. We’ll take it from there.</strong> We’ll rebuild the whole thing for you and send it back ready to use.</p>
         </div>
         <ul class="option-list">
-          <li>We create the missing photos with AI from your reference photos</li>
-          <li>We choose and order the strongest final six</li>
+          <li>We create any missing photos using your reference photos</li>
+          <li>We choose your strongest six and put them in the right order</li>
           <li>We rewrite your bio and prompts</li>
-          <li>We build the complete finished profile</li>
-          <li>Revisions until we agree on the final version</li>
+          <li>We put the full profile together for you</li>
+          <li>We make any final changes with you before it’s finished</li>
         </ul>
         <div class="option-footer">
-          <p class="option-close">You send the references. We do everything else.</p>
+          <p class="option-close">You send us what you have. We do the rest.</p>
+          <p class="card-proof">✓ Human reviewed &nbsp;·&nbsp; 197 profiles transformed &nbsp;·&nbsp; Ready within 24 hours</p>
           <p class="card-guarantee">✓ Covered by our 30 day guarantee</p>
           <a class="option-cta" href="https://buy.stripe.com/8x2bJ0fzlcsI6esgSubZe19">Build It For Me</a>
         </div>
